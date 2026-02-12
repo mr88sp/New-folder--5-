@@ -1,0 +1,80 @@
+[
+  {
+    "id": "headquarter",
+    "type": "دفتر مرکزی",
+    "title": "دفتر مرکزی تهران",
+    "icon": "🏢",
+    "order": 1,
+    "items": [
+      {
+        "label": "آدرس:",
+        "value": "تهران، خیابان ولیعصر، نرسیده به میدان ولیعصر، پلاک ۱۲۳۴",
+        "type": "text"
+      },
+      {
+        "label": "تلفن:",
+        "value": "۰۲۱-۸۸۸۸۸۸۸۸",
+        "type": "phone",
+        "link": "tel:02188888888"
+      },
+      {
+        "label": "فکس:",
+        "value": "۰۲۱-۸۸۸۸۸۸۸۹",
+        "type": "text"
+      }
+    ]
+  },
+  {
+    "id": "esfahan",
+    "type": "شعبه",
+    "title": "شعبه اصفهان",
+    "icon": "🏪",
+    "order": 2,
+    "items": [
+      {
+        "label": "آدرس:",
+        "value": "اصفهان، خیابان چهارباغ، مجتمع تجاری نگین، طبقه دوم، واحد ۱۵",
+        "type": "text"
+      },
+      {
+        "label": "تلفن:",
+        "value": "۰۳۱-۱۲۳۴۵۶۷",
+        "type": "phone",
+        "link": "tel:0311234567"
+      },
+      {
+        "label": "موبایل:",
+        "value": "۰۹۱۲-۱۲۳۴۵۶۷",
+        "type": "phone",
+        "link": "tel:09121234567"
+      }
+    ]
+  },
+  {
+    "id": "electronic",
+    "type": "الکترونیکی",
+    "title": "راه‌های الکترونیکی",
+    "icon": "📧",
+    "order": 3,
+    "items": [
+      {
+        "label": "ایمیل فروش:",
+        "value": "sales@soheiliwood.ir",
+        "type": "email",
+        "link": "mailto:sales@soheiliwood.ir"
+      },
+      {
+        "label": "ایمیل پشتیبانی:",
+        "value": "support@soheiliwood.ir",
+        "type": "email",
+        "link": "mailto:support@soheiliwood.ir"
+      },
+      {
+        "label": "وبسایت:",
+        "value": "www.soheiliwood.ir",
+        "type": "url",
+        "link": "https://soheiliwood.ir"
+      }
+    ]
+  }
+]

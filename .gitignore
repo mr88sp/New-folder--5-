@@ -1,0 +1,58 @@
+# ============ وابستگی‌ها ============
+node_modules
+.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# ============ بیلد ============
+.next
+out
+build
+dist
+.npm
+
+# ============ فایل‌های محیطی ============
+.env*.local
+.env.production
+.env.development
+
+# ============ فایل‌های دیتابیس ============
+*.db
+*.sqlite
+*.sqlite3
+
+# ============ لاگ‌ها ============
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ============ گزارش‌ها ============
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# ============ فایل‌های سیستمی ============
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+._*
+
+# ============ وابزارهای ویرایشگر ============
+.vscode/*
+!.vscode/settings.json
+.idea
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# ============ فایل‌های بیلد ============
+*.tsbuildinfo
+.eslintcache
+
+# ============ تصاویر آپلودی ============
+/public/uploads/
+/public/images/uploads/

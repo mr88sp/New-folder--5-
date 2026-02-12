@@ -1,0 +1,74 @@
+[
+  {
+    "id": "sales",
+    "icon": "💰",
+    "title": "دپارتمان فروش",
+    "description": "برای استعلام قیمت، ثبت سفارش و اطلاعات محصولات",
+    "order": 1,
+    "contactPerson": {
+      "initials": "ع.م",
+      "name": "علی محمدی",
+      "position": "مدیر فروش"
+    },
+    "contacts": [
+      {
+        "type": "phone",
+        "value": "۰۲۱-۸۸۸۸۸۸۸۱",
+        "link": "tel:02188888881"
+      },
+      {
+        "type": "email",
+        "value": "sales@soheiliwood.ir",
+        "link": "mailto:sales@soheiliwood.ir"
+      }
+    ]
+  },
+  {
+    "id": "technical",
+    "icon": "🛠️",
+    "title": "دپارتمان پشتیبانی فنی",
+    "description": "برای مشاوره فنی، انتخاب محصول و حل مشکلات اجرایی",
+    "order": 2,
+    "contactPerson": {
+      "initials": "ر.ح",
+      "name": "رضا حسینی",
+      "position": "کارشناس ارشد فنی"
+    },
+    "contacts": [
+      {
+        "type": "phone",
+        "value": "۰۲۱-۸۸۸۸۸۸۸۲",
+        "link": "tel:02188888882"
+      },
+      {
+        "type": "email",
+        "value": "tech@soheiliwood.ir",
+        "link": "mailto:tech@soheiliwood.ir"
+      }
+    ]
+  },
+  {
+    "id": "logistics",
+    "icon": "🚚",
+    "title": "دپارتمان لجستیک",
+    "description": "برای پیگیری ارسال، حمل و نقل و تحویل سفارشات",
+    "order": 3,
+    "contactPerson": {
+      "initials": "س.ک",
+      "name": "سارا کریمی",
+      "position": "مدیر لجستیک"
+    },
+    "contacts": [
+      {
+        "type": "phone",
+        "value": "۰۲۱-۸۸۸۸۸۸۸۳",
+        "link": "tel:02188888883"
+      },
+      {
+        "type": "email",
+        "value": "logistics@soheiliwood.ir",
+        "link": "mailto:logistics@soheiliwood.ir"
+      }
+    ]
+  }
+]

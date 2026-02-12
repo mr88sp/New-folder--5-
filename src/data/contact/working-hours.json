@@ -1,0 +1,30 @@
+[
+  {
+    "id": "sun-wed",
+    "day": "شنبه تا چهارشنبه",
+    "hours": "۸:۰۰ صبح تا ۱۸:۰۰ عصر",
+    "order": 1,
+    "isHoliday": false
+  },
+  {
+    "id": "thu",
+    "day": "پنجشنبه",
+    "hours": "۸:۰۰ صبح تا ۱۴:۰۰ بعدازظهر",
+    "order": 2,
+    "isHoliday": false
+  },
+  {
+    "id": "fri",
+    "day": "جمعه و تعطیلات رسمی",
+    "hours": "تعطیل",
+    "order": 3,
+    "isHoliday": true
+  },
+  {
+    "id": "support",
+    "day": "پشتیبانی تلفنی",
+    "hours": "هر روز ۸:۰۰ تا ۲۰:۰۰",
+    "order": 4,
+    "isHoliday": false
+  }
+]

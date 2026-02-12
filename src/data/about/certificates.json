@@ -1,0 +1,42 @@
+[
+  {
+    "id": "award-1402",
+    "icon": "🏆",
+    "title": "تولیدکننده برتر",
+    "description": "جایزه بهترین تأمین‌کننده مواد اولیه ۱۴۰۲",
+    "order": 1,
+    "image": "/images/certificates/award-1402.jpg"
+  },
+  {
+    "id": "iso-9001",
+    "icon": "⭐",
+    "title": "ISO 9001",
+    "description": "گواهی مدیریت کیفیت بین‌المللی",
+    "order": 2,
+    "image": "/images/certificates/iso-9001.jpg"
+  },
+  {
+    "id": "fsc",
+    "icon": "🌿",
+    "title": "FSC",
+    "description": "گواهی چوب جنگل‌های پایدار",
+    "order": 3,
+    "image": "/images/certificates/fsc.jpg"
+  },
+  {
+    "id": "e1",
+    "icon": "🏅",
+    "title": "کیفیت اروپایی",
+    "description": "تأییدیه کیفیت E1 از اتحادیه اروپا",
+    "order": 4,
+    "image": "/images/certificates/e1.jpg"
+  },
+  {
+    "id": "customer-satisfaction",
+    "icon": "✅",
+    "title": "رضایت مشتری",
+    "description": "دریافت نشان طلایی رضایت مشتری",
+    "order": 5,
+    "image": "/images/certificates/customer-satisfaction.jpg"
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "iran",
+    "name": "ایران‌چوب",
+    "country": "ایران",
+    "logo": "/images/brands/iranchoob.png"
+  },
+  {
+    "id": "turkey",
+    "name": "ترکیه",
+    "country": "ترکیه",
+    "logo": "/images/brands/turkey.png"
+  },
+  {
+    "id": "germany",
+    "name": "آلمان",
+    "country": "آلمان",
+    "logo": "/images/brands/germany.png"
+  },
+  {
+    "id": "italy",
+    "name": "ایتالیا",
+    "country": "ایتالیا",
+    "logo": "/images/brands/italy.png"
+  }
+]

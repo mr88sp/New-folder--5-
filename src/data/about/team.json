@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "علی سهیلی",
+    "position": "مدیرعامل و بنیان‌گذار",
+    "bio": "با بیش از ۲۰ سال تجربه در صنعت چوب و ۱۵ سال مدیریت فروشگاه سهیلی.",
+    "image": "/images/team/ali-seheili.jpg",
+    "order": 1,
+    "social": {
+      "linkedin": "https://linkedin.com/in/ali-seheili",
+      "instagram": "https://instagram.com/ali.seheili"
+    }
+  },
+  {
+    "id": 2,
+    "name": "مریم احمدی",
+    "position": "مدیر فروش",
+    "bio": "کارشناس ارشد مدیریت بازرگانی با ۱۰ سال سابقه در صنعت مواد اولیه ساختمانی.",
+    "image": "/images/team/maryam-ahmadi.jpg",
+    "order": 2,
+    "social": {
+      "linkedin": "https://linkedin.com/in/maryam-ahmadi"
+    }
+  },
+  {
+    "id": 3,
+    "name": "رضا محمدی",
+    "position": "کارشناس فنی",
+    "bio": "مهندس صنایع چوب با ۱۲ سال تجربه در زمینه مشاوره و انتخاب مواد اولیه.",
+    "image": "/images/team/reza-mohammadi.jpg",
+    "order": 3,
+    "social": {
+      "linkedin": "https://linkedin.com/in/reza-mohammadi"
+    }
+  },
+  {
+    "id": 4,
+    "name": "سارا کریمی",
+    "position": "مدیر لجستیک",
+    "bio": "مسئولیت حمل و نقل و انبارداری با ۸ سال سابقه در صنعت حمل و نقل.",
+    "image": "/images/team/sara-karimi.jpg",
+    "order": 4,
+    "social": {
+      "linkedin": "https://linkedin.com/in/sara-karimi"
+    }
+  }
+]

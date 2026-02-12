@@ -1,0 +1,33 @@
+{
+  "brand": {
+    "name": "Soheili Wood",
+    "logo": {
+      "type": "text",
+      "value": "Soheili Wood",
+      "width": 140,
+      "height": 56
+    },
+    "favicon": "/favicon.ico"
+  },
+  "domain": "SoheiliWood.ir",
+  "contact": {
+    "phone": "021-12345678",
+    "mobile": "09123456789",
+    "email": "info@soheiliwood.ir",
+    "address": "تهران، خیابان ولیعصر، نرسیده به میدان ولیعصر، پلاک ۱۲۳۴",
+    "whatsapp": "989123456789",
+    "workingHours": "شنبه تا پنجشنبه ۸:۰۰ - ۱۸:۰۰"
+  },
+  "social": {
+    "instagram": "https://instagram.com/soheiliwood",
+    "telegram": "https://t.me/soheiliwood",
+    "whatsapp": "https://wa.me/989123456789",
+    "linkedin": "https://linkedin.com/company/soheiliwood"
+  },
+  "seo": {
+    "title": "Soheili Wood - فروش تخصصی MDF و ورق کابینت در تهران",
+    "description": "فروش انواع MDF سفید، خام، ضدخش و ضد رطوبت با بهترین کیفیت و قیمت. ارسال سریع به سراسر کشور.",
+    "keywords": "MDF, ورق کابینت, فروش MDF, MDF تهران, ورق MDF, کابینت سازی, صنعت چوب",
+    "ogImage": "/images/og-image.jpg"
+  }
+}

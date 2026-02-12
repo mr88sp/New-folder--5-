@@ -1,0 +1,31 @@
+[
+  {
+    "id": "bulk-100",
+    "badge": "تخفیف ۱۵٪",
+    "title": "خرید بالای ۱۰۰ ورق",
+    "description": "برای سفارشات بالای ۱۰۰ ورق از هر نوع، از ۱۵٪ تخفیف ویژه بهره‌مند شوید.",
+    "price": "۲,۹۷۵,۰۰۰ تومان",
+    "originalPrice": 3500000,
+    "condition": "minQuantity:100",
+    "image": "/images/discounts/bulk.jpg"
+  },
+  {
+    "id": "first-purchase",
+    "badge": "تخفیف ۱۰٪",
+    "title": "اولین خرید",
+    "description": "برای اولین خرید از فروشگاه ما، از ۱۰٪ تخفیف خوش‌آمدگویی استفاده کنید.",
+    "price": "۳۱۵,۰۰۰ تومان",
+    "originalPrice": 350000,
+    "condition": "firstPurchase:true",
+    "image": "/images/discounts/first.jpg"
+  },
+  {
+    "id": "free-shipping",
+    "badge": "ارسال رایگان",
+    "title": "خرید بالای ۵ میلیون",
+    "description": "برای سفارشات بالای ۵ میلیون تومان، از ارسال رایگان در تهران بهره‌مند شوید.",
+    "price": "رایگان",
+    "condition": "minAmount:5000000",
+    "image": "/images/discounts/shipping.jpg"
+  }
+]

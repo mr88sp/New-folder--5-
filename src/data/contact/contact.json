@@ -1,0 +1,14 @@
+{
+  "management": {
+    "phone": "۰۲۱-۸۸۸۸۸۸۸۸",
+    "email": "manager@soheiliwood.ir",
+    "hours": "۹ صبح تا ۵ عصر"
+  },
+  "emergency": {
+    "title": "پشتیبانی اضطراری",
+    "description": "برای مسائل فوری و خارج از ساعت کاری",
+    "phone": "۰۹۱۲-۱۲۳۴۵۶۷",
+    "link": "tel:09121234567",
+    "icon": "📞"
+  }
+}

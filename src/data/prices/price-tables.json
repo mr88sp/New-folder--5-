@@ -1,0 +1,152 @@
+{
+  "lastUpdate": "1403-10-25",
+  "categories": [
+    {
+      "id": "mdf-white",
+      "name": "MDF سفید",
+      "order": 1,
+      "products": [
+        {
+          "thickness": 6,
+          "dimensions": "2440x1220",
+          "factory": "ایران",
+          "unitPrice": 180000,
+          "squareMeterPrice": 60500,
+          "stock": "موجود",
+          "productId": "mdf-white-6"
+        },
+        {
+          "thickness": 8,
+          "dimensions": "2440x1220",
+          "factory": "ایران",
+          "unitPrice": 220000,
+          "squareMeterPrice": 73500,
+          "stock": "موجود",
+          "productId": "mdf-white-8"
+        },
+        {
+          "thickness": 12,
+          "dimensions": "2440x1220",
+          "factory": "ایران",
+          "unitPrice": 280000,
+          "squareMeterPrice": 94000,
+          "stock": "موجود",
+          "productId": "mdf-white-12"
+        },
+        {
+          "thickness": 16,
+          "dimensions": "2440x1220",
+          "factory": "ایران",
+          "unitPrice": 350000,
+          "squareMeterPrice": 117500,
+          "stock": "موجود",
+          "productId": "mdf-white-16"
+        },
+        {
+          "thickness": 18,
+          "dimensions": "2800x2070",
+          "factory": "ترکیه",
+          "unitPrice": 420000,
+          "squareMeterPrice": 72500,
+          "stock": "محدود",
+          "productId": "mdf-white-18"
+        }
+      ]
+    },
+    {
+      "id": "mdf-raw",
+      "name": "MDF خام",
+      "order": 2,
+      "products": [
+        {
+          "thickness": 8,
+          "dimensions": "2440x1220",
+          "factory": "ایران",
+          "unitPrice": 200000,
+          "squareMeterPrice": 67000,
+          "stock": "موجود",
+          "productId": "mdf-raw-8"
+        },
+        {
+          "thickness": 12,
+          "dimensions": "2440x1220",
+          "factory": "ایران",
+          "unitPrice": 250000,
+          "squareMeterPrice": 84000,
+          "stock": "موجود",
+          "productId": "mdf-raw-12"
+        },
+        {
+          "thickness": 16,
+          "dimensions": "2440x1220",
+          "factory": "ایران",
+          "unitPrice": 300000,
+          "squareMeterPrice": 101000,
+          "stock": "موجود",
+          "productId": "mdf-raw-16"
+        },
+        {
+          "thickness": 18,
+          "dimensions": "2440x1220",
+          "factory": "ترکیه",
+          "unitPrice": 320000,
+          "squareMeterPrice": 107500,
+          "stock": "موجود",
+          "productId": "mdf-raw-18"
+        },
+        {
+          "thickness": 25,
+          "dimensions": "3660x1830",
+          "factory": "آلمان",
+          "unitPrice": 550000,
+          "squareMeterPrice": 82000,
+          "stock": "محدود",
+          "productId": "mdf-raw-25"
+        }
+      ]
+    },
+    {
+      "id": "mdf-scratch",
+      "name": "MDF ضدخش",
+      "order": 3,
+      "products": [
+        {
+          "thickness": 12,
+          "dimensions": "2440x1220",
+          "factory": "آلمان",
+          "unitPrice": 380000,
+          "squareMeterPrice": 127500,
+          "stock": "موجود",
+          "productId": "mdf-scratch-12"
+        },
+        {
+          "thickness": 16,
+          "dimensions": "2800x2070",
+          "factory": "آلمان",
+          "unitPrice": 450000,
+          "squareMeterPrice": 151000,
+          "stock": "محدود",
+          "productId": "mdf-scratch-16"
+        },
+        {
+          "thickness": 18,
+          "dimensions": "2800x2070",
+          "factory": "آلمان",
+          "unitPrice": 520000,
+          "squareMeterPrice": 89500,
+          "stock": "موجود",
+          "productId": "mdf-scratch-18"
+        },
+        {
+          "thickness": 25,
+          "dimensions": "2800x2070",
+          "factory": "ایتالیا",
+          "unitPrice": 680000,
+          "squareMeterPrice": 117500,
+          "stock": "موجود",
+          "productId": "mdf-scratch-25"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+[
+  {
+    "id": "experience",
+    "number": "۱۵+",
+    "label": "سال تجربه",
+    "icon": "🏭",
+    "order": 1
+  },
+  {
+    "id": "customers",
+    "number": "۵۰۰۰+",
+    "label": "مشتری راضی",
+    "icon": "👥",
+    "order": 2
+  },
+  {
+    "id": "suppliers",
+    "number": "۵۰+",
+    "label": "تأمین‌کننده",
+    "icon": "🤝",
+    "order": 3
+  },
+  {
+    "id": "products",
+    "number": "۱۰۰+",
+    "label": "محصول متنوع",
+    "icon": "📦",
+    "order": 4
+  },
+  {
+    "id": "support",
+    "number": "۲۴/۷",
+    "label": "پشتیبانی",
+    "icon": "🕒",
+    "order": 5
+  }
+]

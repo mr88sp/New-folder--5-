@@ -1,0 +1,126 @@
+{
+  "families": [
+    { "id": "all", "name": "همه", "active": true },
+    { "id": "white", "name": "سفید", "active": false },
+    { "id": "cream", "name": "کرم", "active": false },
+    { "id": "brown", "name": "قهوه‌ای", "active": false },
+    { "id": "gray", "name": "خاکستری", "active": false },
+    { "id": "black", "name": "مشکی", "active": false },
+    { "id": "wood", "name": "چوبی", "active": false },
+    { "id": "colorful", "name": "رنگی", "active": false }
+  ],
+  "surfaceTypes": [
+    { "id": "all", "name": "همه", "active": true },
+    { "id": "glossy", "name": "براق", "active": false },
+    { "id": "matte", "name": "مات", "active": false },
+    { "id": "satin", "name": "ساتین", "active": false },
+    { "id": "wood", "name": "طرح چوب", "active": false },
+    { "id": "stone", "name": "طرح سنگ", "active": false }
+  ],
+  "colors": [
+    {
+      "id": 1,
+      "hex": "#ffffff",
+      "name": "سفید یخچالی",
+      "code": "WH-001",
+      "surface": "glossy",
+      "family": "white",
+      "isPopular": true,
+      "description": "سفید خالص و درخشان، مناسب برای فضاهای مدرن و مینیمال"
+    },
+    {
+      "id": 2,
+      "hex": "#f8f5f0",
+      "name": "کرم صدفی",
+      "code": "CR-012",
+      "surface": "satin",
+      "family": "cream",
+      "isPopular": true,
+      "description": "کرم ملایم با جلای ساتین، ایجاد کننده فضایی گرم و دلنشین"
+    },
+    {
+      "id": 3,
+      "hex": "#d4b996",
+      "name": "بلوط روشن",
+      "code": "WO-023",
+      "surface": "wood",
+      "family": "wood",
+      "isPopular": true,
+      "description": "طرح چوب بلوط طبیعی با رنگ روشن، مناسب برای دکوراسیون کلاسیک"
+    },
+    {
+      "id": 4,
+      "hex": "#8b4513",
+      "name": "بلوط تیره",
+      "code": "WO-045",
+      "surface": "wood",
+      "family": "wood",
+      "isPopular": true,
+      "description": "طرح چوب بلوط تیره با بافت طبیعی، جلوه‌ای لوکس و زیبا"
+    },
+    {
+      "id": 5,
+      "hex": "#5d4037",
+      "name": "قهوه‌ای شکلاتی",
+      "code": "BR-056",
+      "surface": "matte",
+      "family": "brown",
+      "isPopular": true,
+      "description": "قهوه‌ای تیره با سطح مات، شیک و مدرن"
+    },
+    {
+      "id": 6,
+      "hex": "#3e2723",
+      "name": "قهوه‌ای شب",
+      "code": "BR-067",
+      "surface": "matte",
+      "family": "brown",
+      "isPopular": true,
+      "description": "قهوه‌ای بسیار تیره، تقریباً مشکی با ته‌رنگ قهوه‌ای"
+    },
+    {
+      "id": 7,
+      "hex": "#90a4ae",
+      "name": "خاکستری نقره‌ای",
+      "code": "GR-078",
+      "surface": "glossy",
+      "family": "gray",
+      "isPopular": true,
+      "description": "خاکستری روشن با جلای براق، مناسب برای فضاهای مدرن"
+    },
+    {
+      "id": 8,
+      "hex": "#455a64",
+      "name": "خاکستری زغالی",
+      "code": "GR-089",
+      "surface": "satin",
+      "family": "gray",
+      "isPopular": true,
+      "description": "خاکستری تیره صنعتی با جلای ساتین"
+    }
+  ],
+  "popularColors": [
+    { "hex": "#ffffff", "name": "سفید" },
+    { "hex": "#f5f5f5", "name": "کرم" },
+    { "hex": "#8d6e63", "name": "قهوه‌ای روشن" },
+    { "hex": "#5d4037", "name": "قهوه‌ای متوسط" },
+    { "hex": "#3e2723", "name": "قهوه‌ای تیره" },
+    { "hex": "#212121", "name": "مشکی" }
+  ],
+  "palettes": [
+    {
+      "id": "modern",
+      "name": "پالت مدرن",
+      "description": "مناسب برای دکوراسیون معاصر و مینیمال",
+      "colors": ["#ffffff", "#f5f5f5", "#90a4ae", "#455a64", "#212121"],
+      "tags": ["minimal", "contemporary", "industrial"]
+    },
+    {
+      "id": "classic",
+      "name": "پالت کلاسیک",
+      "description": "مناسب برای دکوراسیون سنتی و کلاسیک",
+      "colors": ["#d4b996", "#8b4513", "#5d4037", "#3e2723", "#1b0000"],
+      "tags": ["traditional", "warm", "wood"]
+    }
+  ]
+}

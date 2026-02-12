@@ -1,0 +1,42 @@
+[
+  {
+    "id": "whatsapp",
+    "platform": "whatsapp",
+    "url": "https://wa.me/989123456789",
+    "icon": "💬",
+    "title": "واتس‌اپ",
+    "order": 1
+  },
+  {
+    "id": "telegram",
+    "platform": "telegram",
+    "url": "https://t.me/soheiliwood",
+    "icon": "📱",
+    "title": "تلگرام",
+    "order": 2
+  },
+  {
+    "id": "instagram",
+    "platform": "instagram",
+    "url": "https://instagram.com/soheiliwood",
+    "icon": "📸",
+    "title": "اینستاگرام",
+    "order": 3
+  },
+  {
+    "id": "linkedin",
+    "platform": "linkedin",
+    "url": "https://linkedin.com/company/soheiliwood",
+    "icon": "💼",
+    "title": "لینکدین",
+    "order": 4
+  },
+  {
+    "id": "email",
+    "platform": "email",
+    "url": "mailto:info@soheiliwood.ir",
+    "icon": "✉️",
+    "title": "ایمیل",
+    "order": 5
+  }
+]

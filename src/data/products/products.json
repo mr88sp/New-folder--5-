@@ -1,0 +1,238 @@
+[
+  {
+    "id": "mdf-white-16",
+    "slug": "mdf-safid-16mm",
+    "name": "MDF سفید",
+    "category": "mdf-white",
+    "brand": "ایران‌چوب",
+    "thickness": 16,
+    "dimensions": "2440x1220",
+    "description": "ورق MDF سفید با کیفیت بالا، مناسب برای کابینت و دکوراسیون داخلی",
+    "fullDescription": "ورق MDF سفید تولید شده با بالاترین استانداردهای کیفی، دارای سطحی صاف و یکدست، مناسب برای رنگ‌آمیزی و روکش‌گیری. این محصول برای ساخت کابینت آشپزخانه، کمد دیواری و دکوراسیون داخلی ایده‌آل است.",
+    "images": [
+      "/images/products/mdf-white-16-1.jpg",
+      "/images/products/mdf-white-16-2.jpg",
+      "/images/products/mdf-white-16-3.jpg"
+    ],
+    "thumbnail": "/images/products/mdf-white-16-thumb.jpg",
+    "specs": {
+      "density": "750 kg/m³",
+      "moisture": "8%",
+      "formaldehyde": "E1",
+      "surface": "مات",
+      "bendingStrength": "45 MPa",
+      "swelling": "12%"
+    },
+    "stockStatus": "in-stock",
+    "isFeatured": true,
+    "badge": "پرفروش",
+    "price": 350000,
+    "squareMeterPrice": 117500,
+    "orderButton": {
+      "text": "ثبت سفارش",
+      "link": "https://wa.me/989123456789?text=سلام%2C%20اطلاعات%20بیشتری%20درباره%20MDF%20سفید%2016mm%20می‌خواستم.",
+      "target": "_blank"
+    },
+    "productCode": "MDF-W16",
+    "createdAt": "1403-01-15",
+    "updatedAt": "1403-06-20",
+    "viewCount": 1250,
+    "orderCount": 87
+  },
+  {
+    "id": "mdf-white-18",
+    "slug": "mdf-safid-18mm",
+    "name": "MDF سفید",
+    "category": "mdf-white",
+    "brand": "ایران‌چوب",
+    "thickness": 18,
+    "dimensions": "2800x2070",
+    "description": "ورق MDF سفید ضخیم، مناسب برای پروژه‌های بزرگ و حرفه‌ای",
+    "fullDescription": "ورق MDF سفید با ضخامت ۱۸ میلیمتر و ابعاد بزرگ، مناسب برای پروژه‌های صنعتی و تولید انبوه. کیفیت عالی و سطح یکدست.",
+    "images": [
+      "/images/products/mdf-white-18-1.jpg",
+      "/images/products/mdf-white-18-2.jpg"
+    ],
+    "thumbnail": "/images/products/mdf-white-18-thumb.jpg",
+    "specs": {
+      "density": "750 kg/m³",
+      "moisture": "8%",
+      "formaldehyde": "E1",
+      "surface": "مات",
+      "bendingStrength": "48 MPa",
+      "swelling": "11%"
+    },
+    "stockStatus": "low-stock",
+    "isFeatured": false,
+    "badge": null,
+    "price": 420000,
+    "squareMeterPrice": 72500,
+    "orderButton": {
+      "text": "استعلام موجودی",
+      "link": "https://wa.me/989123456789?text=سلام%2C%20موجودی%20MDF%20سفید%2018mm%20را%20می‌خواستم%20استعلام%20کنم.",
+      "target": "_blank"
+    },
+    "productCode": "MDF-W18",
+    "createdAt": "1403-02-10",
+    "updatedAt": "1403-06-18",
+    "viewCount": 890,
+    "orderCount": 42
+  },
+  {
+    "id": "mdf-raw-16",
+    "slug": "mdf-kham-16mm",
+    "name": "MDF خام",
+    "category": "mdf-raw",
+    "brand": "ایران‌چوب",
+    "thickness": 16,
+    "dimensions": "2440x1220",
+    "description": "ورق MDF خام قابل رنگ‌آمیزی، مناسب برای پروژه‌های سفارشی",
+    "fullDescription": "ورق MDF خام بدون روکش، مناسب برای پروژه‌هایی که نیاز به رنگ‌آمیزی یا روکش اختصاصی دارند. سطح آماده برای اجرای انواع رنگ و روکش.",
+    "images": [
+      "/images/products/mdf-raw-16-1.jpg",
+      "/images/products/mdf-raw-16-2.jpg"
+    ],
+    "thumbnail": "/images/products/mdf-raw-16-thumb.jpg",
+    "specs": {
+      "density": "730 kg/m³",
+      "moisture": "9%",
+      "formaldehyde": "E1",
+      "surface": "خام",
+      "bendingStrength": "42 MPa",
+      "swelling": "13%"
+    },
+    "stockStatus": "in-stock",
+    "isFeatured": true,
+    "badge": null,
+    "price": 300000,
+    "squareMeterPrice": 101000,
+    "orderButton": {
+      "text": "ثبت سفارش",
+      "link": "https://wa.me/989123456789?text=سلام%2C%20اطلاعات%20بیشتری%20درباره%20MDF%20خام%2016mm%20می‌خواستم.",
+      "target": "_blank"
+    },
+    "productCode": "MDF-R16",
+    "createdAt": "1403-01-20",
+    "updatedAt": "1403-06-15",
+    "viewCount": 760,
+    "orderCount": 53
+  },
+  {
+    "id": "mdf-raw-18",
+    "slug": "mdf-kham-18mm",
+    "name": "MDF خام",
+    "category": "mdf-raw",
+    "brand": "ترکیه",
+    "thickness": 18,
+    "dimensions": "2440x1220",
+    "description": "ورق MDF خام وارداتی با کیفیت بالا",
+    "fullDescription": "ورق MDF خام وارداتی از ترکیه با کیفیت عالی و چگالی یکنواخت. مناسب برای پروژه‌های حساس و تولیدات با کیفیت.",
+    "images": [
+      "/images/products/mdf-raw-18-1.jpg",
+      "/images/products/mdf-raw-18-2.jpg"
+    ],
+    "thumbnail": "/images/products/mdf-raw-18-thumb.jpg",
+    "specs": {
+      "density": "750 kg/m³",
+      "moisture": "8%",
+      "formaldehyde": "E1",
+      "surface": "خام",
+      "bendingStrength": "46 MPa",
+      "swelling": "12%"
+    },
+    "stockStatus": "in-stock",
+    "isFeatured": false,
+    "badge": "جدید",
+    "price": 320000,
+    "squareMeterPrice": 107500,
+    "orderButton": {
+      "text": "ثبت سفارش",
+      "link": "https://wa.me/989123456789?text=سلام%2C%20اطلاعات%20بیشتری%20درباره%20MDF%20خام%2018mm%20ترکیه%20می‌خواستم.",
+      "target": "_blank"
+    },
+    "productCode": "MDF-R18",
+    "createdAt": "1403-03-05",
+    "updatedAt": "1403-06-10",
+    "viewCount": 520,
+    "orderCount": 31
+  },
+  {
+    "id": "mdf-scratch-16",
+    "slug": "mdf-zeddakhesh-16mm",
+    "name": "MDF ضدخش",
+    "category": "mdf-scratch",
+    "brand": "آلمان",
+    "thickness": 16,
+    "dimensions": "2800x2070",
+    "description": "مقاوم در برابر خط و خش، مناسب برای آشپزخانه و محیط‌های پرکاربرد",
+    "fullDescription": "ورق MDF ضدخش با روکش مخصوص و مقاومت بالا در برابر خط و خش، ضربه و سایش. ایده‌آل برای کابینت آشپزخانه، میز کار و فضاهای پرتردد.",
+    "images": [
+      "/images/products/mdf-scratch-16-1.jpg",
+      "/images/products/mdf-scratch-16-2.jpg",
+      "/images/products/mdf-scratch-16-3.jpg"
+    ],
+    "thumbnail": "/images/products/mdf-scratch-16-thumb.jpg",
+    "specs": {
+      "density": "780 kg/m³",
+      "moisture": "7%",
+      "formaldehyde": "E0",
+      "surface": "مات",
+      "bendingStrength": "52 MPa",
+      "swelling": "9%"
+    },
+    "stockStatus": "low-stock",
+    "isFeatured": true,
+    "badge": "پرفروش",
+    "price": 450000,
+    "squareMeterPrice": 151000,
+    "orderButton": {
+      "text": "استعلام موجودی",
+      "link": "https://wa.me/989123456789?text=سلام%2C%20موجودی%20MDF%20ضدخش%2016mm%20آلمان%20را%20می‌خواستم%20استعلام%20کنم.",
+      "target": "_blank"
+    },
+    "productCode": "MDF-S16",
+    "createdAt": "1403-01-25",
+    "updatedAt": "1403-06-12",
+    "viewCount": 1120,
+    "orderCount": 68
+  },
+  {
+    "id": "mdf-moisture-12",
+    "slug": "mdf-zeddorotobat-12mm",
+    "name": "MDF ضد رطوبت",
+    "category": "mdf-moisture",
+    "brand": "ایتالیا",
+    "thickness": 12,
+    "dimensions": "2440x1220",
+    "description": "مقاوم در برابر رطوبت، مناسب برای سرویس‌های بهداشتی و آشپزخانه",
+    "fullDescription": "ورق MDF ضد رطوبت با تکنولوژی HMR، مقاوم در برابر آب و رطوبت. مناسب برای فضاهای مرطوب مانند آشپزخانه، سرویس بهداشتی و حمام.",
+    "images": [
+      "/images/products/mdf-moisture-12-1.jpg",
+      "/images/products/mdf-moisture-12-2.jpg"
+    ],
+    "thumbnail": "/images/products/mdf-moisture-12-thumb.jpg",
+    "specs": {
+      "density": "800 kg/m³",
+      "moisture": "6%",
+      "formaldehyde": "E1",
+      "surface": "مات",
+      "bendingStrength": "55 MPa",
+      "swelling": "6%"
+    },
+    "stockStatus": "in-stock",
+    "isFeatured": true,
+    "badge": "جدید",
+    "price": 380000,
+    "squareMeterPrice": 127500,
+    "orderButton": {
+      "text": "ثبت سفارش",
+      "link": "https://wa.me/989123456789?text=سلام%2C%20اطلاعات%20بیشتری%20درباره%20MDF%20ضد%20رطوبت%2012mm%20می‌خواستم.",
+      "target": "_blank"
+    },
+    "productCode": "MDF-M12",
+    "createdAt": "1403-02-15",
+    "updatedAt": "1403-06-05",
+    "viewCount": 890,
+    "orderCount": 47
+  }
+]

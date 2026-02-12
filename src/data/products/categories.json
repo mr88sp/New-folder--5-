@@ -1,0 +1,30 @@
+[
+  {
+    "id": "mdf-white",
+    "name": "MDF سفید",
+    "slug": "mdf-safid",
+    "count": 2,
+    "image": "/images/categories/mdf-white.jpg"
+  },
+  {
+    "id": "mdf-raw",
+    "name": "MDF خام",
+    "slug": "mdf-kham",
+    "count": 2,
+    "image": "/images/categories/mdf-raw.jpg"
+  },
+  {
+    "id": "mdf-scratch",
+    "name": "MDF ضدخش",
+    "slug": "mdf-zeddakhesh",
+    "count": 1,
+    "image": "/images/categories/mdf-scratch.jpg"
+  },
+  {
+    "id": "mdf-moisture",
+    "name": "MDF ضد رطوبت",
+    "slug": "mdf-zeddorotobat",
+    "count": 1,
+    "image": "/images/categories/mdf-moisture.jpg"
+  }
+]

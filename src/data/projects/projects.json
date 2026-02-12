@@ -1,0 +1,137 @@
+[
+  {
+    "id": 1,
+    "title": "کابینت مدرن آشپزخانه",
+    "category": "آشپزخانه",
+    "description": "اجرای کابینت مدرن با استفاده از MDF ضد رطوبت 16mm و روکش PVC مات سفید",
+    "location": "تهران، سعادت آباد",
+    "year": "۱۴۰۲",
+    "images": [
+      "/images/projects/kitchen-1.jpg",
+      "/images/projects/kitchen-2.jpg",
+      "/images/projects/kitchen-3.jpg"
+    ],
+    "thumbnail": "/images/projects/kitchen-thumb.jpg",
+    "features": [
+      "روکش PVC مات سفید",
+      "دستگیره لمسی",
+      "روشنایی LED",
+      "فضای ذخیره سازی هوشمند"
+    ],
+    "client": "خانواده محمدی",
+    "area": "۲۵ متر مربع",
+    "materials": ["MDF ضد رطوبت 16mm", "PVC مات سفید", "شیشه سکوریت"]
+  },
+  {
+    "id": 2,
+    "title": "کمد دیواری اتاق خواب",
+    "category": "اتاق خواب",
+    "description": "طراحی و اجرای کمد دیواری تمام قد با MDF استاندارد و فینیش چوب طبیعی",
+    "location": "تهران، الهیه",
+    "year": "۱۴۰۲",
+    "images": [
+      "/images/projects/wardrobe-1.jpg",
+      "/images/projects/wardrobe-2.jpg"
+    ],
+    "thumbnail": "/images/projects/wardrobe-thumb.jpg",
+    "features": [
+      "فینیش چوب گردو",
+      "سیستم آرام بند",
+      "قفسه‌بندی قابل تنظیم",
+      "آویز کراوات و کمربند"
+    ],
+    "client": "سرکار خانم احمدی",
+    "area": "۱۲ متر مربع",
+    "materials": ["MDF استاندارد 16mm", "روکش چوب گردو"]
+  },
+  {
+    "id": 3,
+    "title": "درب ورودی مدرن",
+    "category": "درب",
+    "description": "ساخت و نصب درب ورودی لوکس با چوب روسی و روکش HPL طرح چوب",
+    "location": "تهران، جردن",
+    "year": "۱۴۰۱",
+    "images": [
+      "/images/projects/door-1.jpg",
+      "/images/projects/door-2.jpg",
+      "/images/projects/door-3.jpg"
+    ],
+    "thumbnail": "/images/projects/door-thumb.jpg",
+    "features": [
+      "چوب روسی درجه یک",
+      "روکش HPL ضد خش",
+      "قفل هوشمند",
+      "دیدبانی"
+    ],
+    "client": "آقای رضایی",
+    "area": "۲.۲ متر مربع",
+    "materials": ["چوب روسی", "HPL طرح چوب بلوط"]
+  },
+  {
+    "id": 4,
+    "title": "میز کنفرانس اداری",
+    "category": "اداری",
+    "description": "طراحی و ساخت میز کنفرانس مدرن با MDF ضخیم و روکش HPL طرح چوب",
+    "location": "تهران، میرداماد",
+    "year": "۱۴۰۲",
+    "images": [
+      "/images/projects/office-1.jpg",
+      "/images/projects/office-2.jpg"
+    ],
+    "thumbnail": "/images/projects/office-thumb.jpg",
+    "features": [
+      "روکش HPL ضد خش",
+      "پاساژ کابل مخفی",
+      "پایه فلزی کروماته",
+      "گنجایش ۱۲ نفر"
+    ],
+    "client": "شرکت رایان پرداز",
+    "area": "۸ متر مربع",
+    "materials": ["MDF 25mm", "HPL طرح چوب", "فلز کروماته"]
+  },
+  {
+    "id": 5,
+    "title": "کابینت سرویس بهداشتی",
+    "category": "سرویس بهداشتی",
+    "description": "کابینت ضد رطوبت مخصوص سرویس بهداشتی با MDF ضد آب",
+    "location": "تهران، شهرک غرب",
+    "year": "۱۴۰۲",
+    "images": [
+      "/images/projects/bathroom-1.jpg",
+      "/images/projects/bathroom-2.jpg"
+    ],
+    "thumbnail": "/images/projects/bathroom-thumb.jpg",
+    "features": [
+      "MDF ضد آب HMR",
+      "روکش مات",
+      "لولای ضد زنگ",
+      "فضای ذخیره سازی"
+    ],
+    "client": "آقای کریمی",
+    "area": "۳.۵ متر مربع",
+    "materials": ["MDF ضد رطوبت 16mm", "روکش PVC مات"]
+  },
+  {
+    "id": 6,
+    "title": "قفسه‌بندی فروشگاه",
+    "category": "تجاری",
+    "description": "طراحی و اجرای قفسه‌بندی مدرن برای فروشگاه لباس",
+    "location": "تهران، ونک",
+    "year": "۱۴۰۱",
+    "images": [
+      "/images/projects/store-1.jpg",
+      "/images/projects/store-2.jpg",
+      "/images/projects/store-3.jpg"
+    ],
+    "thumbnail": "/images/projects/store-thumb.jpg",
+    "features": [
+      "طراحی ماژولار",
+      "نورپردازی LED",
+      "تحمل وزن بالا",
+      "قابل تنظیم"
+    ],
+    "client": "بوتیک سارا",
+    "area": "۴۰ متر مربع",
+    "materials": ["نئوپان 18mm", "PVC سفید", "فلز"]
+  }
+]
