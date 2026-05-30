@@ -1,45 +1,27 @@
-'use client';
-
-import { useState, useEffect, useCallback } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useState, useEffect } from 'react';
 import { FiSearch, FiX } from 'react-icons/fi';
-import { debounce } from '@/utils/animation.util';
+import { useDebounce } from '@/hooks/useDebounce';
+
+interface ProductSearchProps {
+  onSearch: (search: string) => void;
+}
 
 /**
  * کامپوننت ProductSearch - جستجوی محصولات
  * منطبق بر ساختار products-search در products.html
  */
-const ProductSearch = () => {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const [searchTerm, setSearchTerm] = useState(searchParams.get('q') || '');
+const ProductSearch = ({ onSearch }: ProductSearchProps) => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
-  // جستجوی با دیبانس
-  const debouncedSearch = useCallback(
-    debounce((term: string) => {
-      const params = new URLSearchParams(searchParams.toString());
-      
-      if (term) {
-        params.set('q', term);
-      } else {
-        params.delete('q');
-      }
-      
-      router.push(`/products?${params.toString()}`);
-    }, 500),
-    [searchParams, router]
-  );
-
+  // ارسال جستجو به parent component
   useEffect(() => {
-    debouncedSearch(searchTerm);
-  }, [searchTerm, debouncedSearch]);
+    onSearch(debouncedSearchTerm);
+  }, [debouncedSearchTerm, onSearch]);
 
   // پاک کردن جستجو
   const clearSearch = () => {
     setSearchTerm('');
-    const params = new URLSearchParams(searchParams.toString());
-    params.delete('q');
-    router.push(`/products?${params.toString()}`);
   };
 
   return (
@@ -50,7 +32,7 @@ const ProductSearch = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="جستجوی محصولات (مثال: MDF سفید، 16mm، ایران‌چوب...)"
-          className="w-full px-5 py-4 pr-12 pl-12 border-2 border-gray-200 rounded-xl focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 outline-none transition-all text-base"
+          className="w-full px-5 py-4 pr-12 pl-12 border-2 border-gray-200 rounded-button focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 outline-none transition-all text-base"
           dir="rtl"
         />
         

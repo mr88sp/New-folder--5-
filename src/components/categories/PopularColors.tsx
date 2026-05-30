@@ -7,8 +7,13 @@ import colorsData from '@/data/colors/colors.json';
  * کامپوننت PopularColors - رنگ‌های پرفروش و محبوب
  * منطبق بر ساختار popular-colors در categories.html
  */
-const PopularColors = () => {
-  const popularColors = colorsData.popularColors || [
+interface PopularColorsProps {
+  siteContent: any;
+  products: any[];
+}
+
+const PopularColors = ({ siteContent, products }: PopularColorsProps) => {
+  const popularColors = siteContent.popular_colors || [
     { hex: '#ffffff', name: 'سفید' },
     { hex: '#f5f5f5', name: 'کرم' },
     { hex: '#8d6e63', name: 'قهوه‌ای روشن' },
@@ -18,13 +23,13 @@ const PopularColors = () => {
   ];
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
+    <div className="bg-white rounded-card shadow-lg p-6 mb-8">
       <div className="text-center mb-6">
         <h3 className="text-xl font-bold text-gray-900 mb-2">
-          رنگ‌های پرفروش
+          {siteContent.popular_colors_title || 'رنگ‌های پرفروش'}
         </h3>
         <p className="text-gray-600">
-          پرطرفدارترین انتخاب‌های مشتریان
+          {siteContent.popular_colors_subtitle || 'پرطرفدارترین انتخاب‌های مشتریان'}
         </p>
       </div>
 
@@ -38,10 +43,10 @@ const PopularColors = () => {
             className="group relative"
           >
             <div
-              className="aspect-square rounded-xl shadow-md hover:shadow-xl transition-all cursor-pointer group-hover:-translate-y-1"
+              className="aspect-square rounded-button shadow-md hover:shadow-xl transition-all cursor-pointer group-hover:-translate-y-1"
               style={{ backgroundColor: color.hex }}
             >
-              <div className="absolute inset-0 rounded-xl bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+              <div className="absolute inset-0 rounded-button bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
                 <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity text-xs font-medium px-2 py-1 bg-black/50 rounded-full">
                   {color.name}
                 </span>

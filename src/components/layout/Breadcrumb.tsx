@@ -1,7 +1,6 @@
 'use client';
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useState, useEffect } from 'react';
 import { FiChevronLeft } from 'react-icons/fi';
 
 /**
@@ -9,7 +8,11 @@ import { FiChevronLeft } from 'react-icons/fi';
  * منطبق بر ساختار breadcrumbs در HTML قبلی
  */
 const Breadcrumb = () => {
-  const pathname = usePathname();
+  const [pathname, setPathname] = useState('');
+
+  useEffect(() => {
+    setPathname(window.location.pathname);
+  }, []);
   
   // حذف اسلش اول و تبدیل به آرایه
   const paths = pathname.split('/').filter(Boolean);
@@ -34,9 +37,9 @@ const Breadcrumb = () => {
         <ol className="flex items-center flex-wrap gap-2 text-sm">
           {/* خانه */}
           <li>
-            <Link href="/" className="text-gray-600 hover:text-brand-primary transition-colors">
+            <a href="/" className="text-gray-600 hover:text-brand-primary transition-colors">
               خانه
-            </Link>
+            </a>
           </li>
           
           {/* جداکننده */}
@@ -62,12 +65,12 @@ const Breadcrumb = () => {
               <li key={url} className="flex items-center gap-2">
                 {!isLast ? (
                   <>
-                    <Link
+                    <a
                       href={url}
                       className="text-gray-600 hover:text-brand-primary transition-colors"
                     >
                       {pathNames[path] || path}
-                    </Link>
+                    </a>
                     <FiChevronLeft className="text-gray-400" />
                   </>
                 ) : (

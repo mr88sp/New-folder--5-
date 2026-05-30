@@ -3,22 +3,25 @@
 import { motion } from 'framer-motion';
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
-import statsData from '@/data/about/stats.json';
+
+interface StatsSectionProps {
+  siteContent: any;
+}
 
 /**
  * کامپوننت StatsSection - آمار و ارقام
  * منطبق بر ساختار stats-section در about.html
  */
-const StatsSection = () => {
+const StatsSection = ({ siteContent }: StatsSectionProps) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
   return (
-    <div className="bg-gradient-to-r from-brand-primary to-brand-dark rounded-3xl p-8 md:p-12 mb-16" ref={ref}>
+    <div className="bg-gradient-to-r from-brand-primary to-brand-dark rounded-card p-8 md:p-12 mb-16" ref={ref}>
       <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
-        {statsData.map((stat, index) => (
+        {siteContent.stats_items?.map((stat: any, index: number) => (
           <motion.div
             key={stat.id}
             initial={{ opacity: 0, y: 20 }}

@@ -3,13 +3,17 @@
 import { motion } from 'framer-motion';
 import { FiAward, FiUsers, FiTruck, FiPackage } from 'react-icons/fi';
 
+interface AboutHeaderProps {
+  siteContent: any;
+}
+
 /**
  * کامپوننت AboutHeader - هدر صفحه درباره ما
  * منطبق بر ساختار about-header در about.html
  */
-const AboutHeader = () => {
+const AboutHeader = ({ siteContent }: AboutHeaderProps) => {
   return (
-    <div className="relative bg-gradient-to-r from-brand-primary to-brand-dark rounded-3xl text-white p-8 md:p-12 mb-12 overflow-hidden">
+    <div className="relative bg-gradient-to-r from-brand-primary to-brand-dark rounded-card text-white p-8 md:p-12 mb-12 overflow-hidden">
       {/* الگوی پس‌زمینه */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
@@ -25,10 +29,10 @@ const AboutHeader = () => {
           transition={{ duration: 0.6 }}
         >
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-            درباره فروشگاه سهیلی
+            {siteContent.about_header_title || "درباره فروشگاه سهیلی"}
           </h1>
           <p className="text-xl md:text-2xl text-white/90 leading-relaxed">
-            با بیش از ۱۵ سال تجربه در صنعت چوب و MDF، کیفیت و رضایت مشتری اولویت ماست
+            {siteContent.about_header_description || "با بیش از ۱۵ سال تجربه در صنعت چوب و MDF، کیفیت و رضایت مشتری اولویت ماست"}
           </p>
         </motion.div>
 
@@ -39,24 +43,24 @@ const AboutHeader = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12"
         >
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4">
+          <div className="bg-white/10 backdrop-blur-sm rounded-card p-4">
             <FiAward className="w-6 h-6 mx-auto mb-2" />
-            <div className="text-2xl font-bold">۱۵+</div>
+            <div className="text-2xl font-bold">{siteContent.about_page_stats_experience || '۱۵+'}</div>
             <div className="text-sm text-white/80">سال تجربه</div>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4">
+          <div className="bg-white/10 backdrop-blur-sm rounded-card p-4">
             <FiUsers className="w-6 h-6 mx-auto mb-2" />
-            <div className="text-2xl font-bold">۵۰۰۰+</div>
+            <div className="text-2xl font-bold">{siteContent.about_page_stats_customers || '۵۰۰۰+'}</div>
             <div className="text-sm text-white/80">مشتری راضی</div>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4">
+          <div className="bg-white/10 backdrop-blur-sm rounded-card p-4">
             <FiPackage className="w-6 h-6 mx-auto mb-2" />
-            <div className="text-2xl font-bold">۱۰۰+</div>
+            <div className="text-2xl font-bold">{siteContent.about_page_stats_products || '۱۰۰+'}</div>
             <div className="text-sm text-white/80">محصول متنوع</div>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4">
+          <div className="bg-white/10 backdrop-blur-sm rounded-card p-4">
             <FiTruck className="w-6 h-6 mx-auto mb-2" />
-            <div className="text-2xl font-bold">۲۴/۷</div>
+            <div className="text-2xl font-bold">{siteContent.about_page_stats_support || '۲۴/۷'}</div>
             <div className="text-sm text-white/80">پشتیبانی</div>
           </div>
         </motion.div>

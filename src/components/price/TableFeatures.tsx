@@ -7,25 +7,29 @@ import { FiDollarSign, FiCheckCircle, FiTruck } from 'react-icons/fi';
  * کامپوننت TableFeatures - ویژگی‌های جداول قیمت
  * منطبق بر ساختار table-features در price.html
  */
-const TableFeatures = () => {
+interface TableFeaturesProps {
+  siteContent: any;
+}
+
+const TableFeatures = ({ siteContent }: TableFeaturesProps) => {
   const features = [
     {
       icon: <FiDollarSign className="text-white" size={24} />,
-      title: 'قیمت رقابتی',
-      description: 'بهترین قیمت‌ها در بازار با حذف واسطه‌ها و خرید مستقیم از کارخانه',
+      title: siteContent.price_feature_1_title || 'قیمت رقابتی',
+      description: siteContent.price_feature_1_desc || 'بهترین قیمت‌ها در بازار با حذف واسطه‌ها و خرید مستقیم از کارخانه',
       bgColor: 'bg-gradient-to-br from-green-500 to-emerald-600',
     },
     {
       icon: <FiCheckCircle className="text-white" size={24} />,
-      title: 'کیفیت تضمینی',
-      description: 'کلیه محصولات دارای گواهی کیفیت از تولیدکنندگان معتبر داخلی و خارجی',
+      title: siteContent.price_feature_2_title || 'کیفیت تضمینی',
+      description: siteContent.price_feature_2_desc || 'کلیه محصولات دارای گواهی کیفیت از تولیدکنندگان معتبر داخلی و خارجی',
       bgColor: 'bg-gradient-to-br from-blue-500 to-indigo-600',
     },
     {
       icon: <FiTruck className="text-white" size={24} />,
-      title: 'تحویل سریع',
-      description: 'تحویل در کمترین زمان ممکن به سراسر کشور با ناوگان حمل اختصاصی',
-      bgColor: 'bg-gradient-to-br from-orange-500 to-red-600',
+      title: siteContent.price_feature_3_title || 'تحویل سریع',
+      description: siteContent.price_feature_3_desc || 'تحویل در کمترین زمان ممکن به سراسر کشور با ناوگان حمل اختصاصی',
+      bgColor: 'bg-gradient-to-br from-slate-600 to-gray-800',
     },
   ];
 
@@ -37,9 +41,9 @@ const TableFeatures = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: index * 0.1 }}
-          className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all hover:-translate-y-2"
+          className="bg-white rounded-card shadow-lg p-6 hover:shadow-xl transition-all hover:-translate-y-2"
         >
-          <div className={`w-14 h-14 ${feature.bgColor} rounded-2xl flex items-center justify-center mb-4 shadow-lg`}>
+          <div className={`w-14 h-14 ${feature.bgColor} rounded-card flex items-center justify-center mb-4 shadow-lg`}>
             {feature.icon}
           </div>
           <h3 className="text-lg font-bold text-gray-900 mb-2">

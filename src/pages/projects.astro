@@ -1,0 +1,82 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Breadcrumb from '../components/layout/Breadcrumb';
+import Container from '../components/ui/Container';
+import ProjectGallery from '../components/projects/ProjectGallery';
+import { getSiteContent, getProducts } from '../utils/api';
+
+// دریافت محتوای سایت از API
+const siteContent = await getSiteContent();
+
+// دریافت محصولات از API
+const products = await getProducts();
+---
+
+<MainLayout title={siteContent.projects_page_title || "پروژه‌ها"}>
+  <div class="pb-16">
+    <Breadcrumb client:load />
+    
+    <Container className="pt-8" client:load>
+      {/* هدر صفحه */}
+      <div class="text-center mb-12">
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          {siteContent.projects_page_heading || "پروژه‌های اجرا شده"}
+        </h1>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          {siteContent.projects_page_description || "نمونه کارهای واقعی اجرا شده با محصولات Soheili Wood"}
+        </p>
+      </div>
+
+      {/* آمار پروژه‌ها */}
+      <div class="bg-gradient-to-r from-brand-primary to-brand-dark rounded-card p-8 text-white mb-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div class="text-center">
+            <div class="text-3xl md:text-4xl font-bold mb-2">{siteContent.projects_stats_years || "۱۵+"}</div>
+            <div class="text-sm opacity-90">{siteContent.projects_stats_years_text || "سال تجربه"}</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl md:text-4xl font-bold mb-2">{siteContent.projects_stats_projects || "۵۰۰+"}</div>
+            <div class="text-sm opacity-90">{siteContent.projects_stats_projects_text || "پروژه موفق"}</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl md:text-4xl font-bold mb-2">{siteContent.projects_stats_satisfaction || "۱۰۰%"}</div>
+            <div class="text-sm opacity-90">{siteContent.projects_stats_satisfaction_text || "رضایت مشتری"}</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl md:text-4xl font-bold mb-2">{siteContent.projects_stats_partners || "۵۰+"}</div>
+            <div class="text-sm opacity-90">{siteContent.projects_stats_partners_text || "شریک تجاری"}</div>
+          </div>
+        </div>
+      </div>
+
+      {/* گالری پروژه‌ها */}
+      <ProjectGallery siteContent={siteContent} products={products} client:load />
+
+      {/* بخش تماس */}
+      <div class="mt-16 bg-gray-50 rounded-card p-8 text-center">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">
+          {siteContent.projects_cta_title || "پروژه خود را به ما بسپارید"}
+        </h2>
+        <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
+          {siteContent.projects_cta_description || "تیم متخصص ما آماده اجرای پروژه شما با بالاترین کیفیت و در کوتاه‌ترین زمان است"}
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href={siteContent.projects_whatsapp_link || "https://wa.me/989123456789"}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 bg-green-600 text-white px-8 py-3 rounded-button font-medium hover:bg-green-700 transition-colors"
+          >
+            <span>{siteContent.projects_whatsapp_text || "مشاوره رایگان در واتساپ"}</span>
+          </a>
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center gap-2 bg-white text-gray-700 border border-gray-300 px-8 py-3 rounded-button font-medium hover:bg-gray-50 transition-colors"
+          >
+            <span>{siteContent.projects_contact_text || "تماس با ما"}</span>
+          </a>
+        </div>
+      </div>
+    </Container>
+  </div>
+</MainLayout>

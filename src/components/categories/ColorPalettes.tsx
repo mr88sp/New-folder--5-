@@ -3,15 +3,18 @@
 import { motion } from 'framer-motion';
 import { FiCopy } from 'react-icons/fi';
 import { useState } from 'react';
-import colorsData from '@/data/colors/colors.json';
 
 /**
  * کامپوننت ColorPalettes - پالت‌های رنگی پیشنهادی
  * منطبق بر ساختار color-palettes در categories.html
  */
-const ColorPalettes = () => {
+interface ColorPalettesProps {
+  siteContent: any;
+}
+
+const ColorPalettes = ({ siteContent }: ColorPalettesProps) => {
   const [copiedPalette, setCopiedPalette] = useState<string | null>(null);
-  const palettes = colorsData.palettes || [
+  const palettes = siteContent.color_palettes || [
     {
       id: 'modern',
       name: 'پالت مدرن',
@@ -37,10 +40,10 @@ const ColorPalettes = () => {
     <div className="mt-12">
       <div className="text-center mb-8">
         <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
-          پالت‌های پیشنهادی
+          {siteContent.palettes_title || 'پالت‌های پیشنهادی'}
         </h3>
         <p className="text-gray-600">
-          ترکیب‌های رنگی آماده برای دکوراسیون
+          {siteContent.palettes_subtitle || 'ترکیب‌های رنگی آماده برای دکوراسیون'}
         </p>
       </div>
 
@@ -51,7 +54,7 @@ const ColorPalettes = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all group"
+            className="bg-white rounded-card shadow-lg overflow-hidden hover:shadow-xl transition-all group"
           >
             {/* هدر پالت */}
             <div className="bg-gradient-to-r from-gray-900 to-gray-800 text-white p-6">
@@ -64,7 +67,7 @@ const ColorPalettes = () => {
                 </div>
                 <button
                   onClick={() => copyPalette(palette.id, palette.colors)}
-                  className="bg-white/10 hover:bg-white/20 rounded-lg px-4 py-2 text-sm flex items-center gap-2 transition-colors"
+                  className="bg-white/10 hover:bg-white/20 rounded-button px-4 py-2 text-sm flex items-center gap-2 transition-colors"
                 >
                   {copiedPalette === palette.id ? (
                     '✅ کپی شد!'
@@ -80,7 +83,7 @@ const ColorPalettes = () => {
 
             {/* رنگ‌های پالت */}
             <div className="p-6">
-              <div className="flex h-24 rounded-xl overflow-hidden shadow-lg">
+              <div className="flex h-24 rounded-button overflow-hidden shadow-lg">
                 {palette.colors.map((color, i) => (
                   <div
                     key={i}

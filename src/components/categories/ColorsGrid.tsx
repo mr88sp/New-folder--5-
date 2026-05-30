@@ -2,25 +2,39 @@
 
 import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
+import { FiSearch, FiDroplet } from 'react-icons/fi';
 import ColorCard from './ColorCard';
 import ColorModal from './ColorModal';
 import type { Color, ColorFilter } from '@/types/color';
-import colorsData from '@/data/colors/colors.json';
 
 /**
  * کامپوننت ColorsGrid - گرید نمایش رنگ‌ها
  * منطبق بر ساختار colors-grid در categories.html
  */
 interface ColorsGridProps {
+  siteContent: any;
+  products: any[];
   filter: ColorFilter;
 }
 
-const ColorsGrid = ({ filter }: ColorsGridProps) => {
+const ColorsGrid = ({ siteContent, products, filter }: ColorsGridProps) => {
   const [selectedColor, setSelectedColor] = useState<Color | null>(null);
 
   // فیلتر رنگ‌ها
   const filteredColors = useMemo(() => {
-    let result = [...colorsData.colors] as Color[];
+    let result = products.length > 0 
+      ? products.map((p: any) => ({
+          id: p.id,
+          name: p.title || 'بدون نام',
+          code: p.code || '',
+          hex: p.color_hex || '#e5e7eb',
+          family: p.color_family || 'all',
+          surface: p.surface_type || 'all',
+          isPopular: p.is_popular || false,
+          image: p.image_url,
+          description: p.description
+        })) as Color[]
+      : (siteContent.colors || []) as Color[];
 
     // فیلتر بر اساس خانواده رنگ
     if (filter.family && filter.family !== 'all') {
@@ -55,10 +69,10 @@ const ColorsGrid = ({ filter }: ColorsGridProps) => {
       {/* تعداد رنگ‌ها */}
       <div className="flex justify-between items-center mb-6">
         <h4 className="text-lg font-bold text-gray-900">
-          رنگ‌های موجود
+          {siteContent.colors_grid_title || 'رنگ‌های موجود'}
         </h4>
         <span className="bg-brand-primary/10 text-brand-primary px-4 py-2 rounded-full text-sm font-medium">
-          {filteredColors.length} رنگ
+          {filteredColors.length} {siteContent.colors_count_label || 'رنگ'}
         </span>
       </div>
 
@@ -86,12 +100,16 @@ const ColorsGrid = ({ filter }: ColorsGridProps) => {
         </motion.div>
       ) : (
         <div className="text-center py-16">
-          <div className="text-6xl mb-4 text-gray-300">🎨</div>
+          <div className="flex justify-center mb-6">
+            <div className="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center text-gray-300">
+              <FiDroplet size={40} />
+            </div>
+          </div>
           <h3 className="text-xl font-bold text-gray-900 mb-2">
-            رنگی یافت نشد!
+            {siteContent.colors_not_found_title || 'رنگی یافت نشد!'}
           </h3>
           <p className="text-gray-600">
-            هیچ رنگی با فیلترهای انتخاب شده مطابقت ندارد.
+            {siteContent.colors_not_found_text || 'هیچ رنگی با فیلترهای انتخاب شده مطابقت ندارد.'}
           </p>
         </div>
       )}
@@ -99,6 +117,7 @@ const ColorsGrid = ({ filter }: ColorsGridProps) => {
       {/* مدال نمایش رنگ */}
       {selectedColor && (
         <ColorModal
+          siteContent={siteContent}
           color={selectedColor}
           onClose={() => setSelectedColor(null)}
         />

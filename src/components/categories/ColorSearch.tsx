@@ -1,69 +1,62 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { FiSearch, FiX } from 'react-icons/fi';
-import { debounce } from '@/utils/debounce.util';
+import { useState, useEffect } from 'react';
+import { FiSearch, FiX, FiLayers } from 'react-icons/fi';
+import { useDebounce } from '@/hooks/useDebounce';
 
 /**
  * کامپوننت ColorSearch - جستجوی رنگ‌ها
  * منطبق بر ساختار color-search در categories.html
  */
-const ColorSearch = () => {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const [searchTerm, setSearchTerm] = useState(searchParams.get('q') || '');
+interface ColorSearchProps {
+  siteContent: any;
+  searchTerm: string;
+  onSearch: (term: string) => void;
+}
 
-  const debouncedSearch = useCallback(
-    debounce((term: string) => {
-      const params = new URLSearchParams(searchParams.toString());
-      
-      if (term) {
-        params.set('q', term);
-      } else {
-        params.delete('q');
-      }
-      
-      router.push(`/categories?${params.toString()}`);
-    }, 500),
-    [searchParams, router]
-  );
+const ColorSearch = ({ siteContent, searchTerm, onSearch }: ColorSearchProps) => {
+  const [localTerm, setLocalTerm] = useState(searchTerm);
+  const debouncedTerm = useDebounce(localTerm, 500);
 
   useEffect(() => {
-    debouncedSearch(searchTerm);
-  }, [searchTerm, debouncedSearch]);
+    setLocalTerm(searchTerm);
+  }, [searchTerm]);
+
+  useEffect(() => {
+    if (debouncedTerm !== searchTerm) {
+      onSearch(debouncedTerm);
+    }
+  }, [debouncedTerm, onSearch, searchTerm]);
 
   const clearSearch = () => {
-    setSearchTerm('');
-    const params = new URLSearchParams(searchParams.toString());
-    params.delete('q');
-    router.push(`/categories?${params.toString()}`);
+    setLocalTerm('');
+    onSearch('');
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
+    <div className="bg-white rounded-card shadow-lg p-6 mb-8">
       <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-4">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-            <span className="text-white text-xl">🎨</span>
+          <div className="w-10 h-10 bg-brand-primary/10 rounded-button flex items-center justify-center">
+            <FiLayers className="text-brand-primary text-xl" />
           </div>
           <div>
-            <h3 className="text-lg font-bold text-gray-900">کاتالوگ رنگ‌ها</h3>
-            <p className="text-sm text-gray-500">۵۲ رنگ متنوع برای پروژه شما</p>
+            <h3 className="text-lg font-bold text-gray-900">{siteContent.color_search_title || 'کاتالوگ رنگ‌ها'}</h3>
+            <p className="text-sm text-gray-500">{siteContent.color_search_subtitle || '۵۲ رنگ متنوع برای پروژه شما'}</p>
           </div>
         </div>
         <span className="bg-brand-primary/10 text-brand-primary px-4 py-2 rounded-full text-sm font-medium">
-          ۵۲ رنگ
+          {siteContent.color_search_count_label || '۵۲ رنگ'}
         </span>
       </div>
 
       <div className="relative">
         <input
           type="text"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="جستجوی رنگ (مثال: سفید، بلوط، قهوه‌ای...)"
-          className="w-full px-5 py-4 pr-12 pl-12 border-2 border-gray-200 rounded-xl focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 outline-none transition-all text-base"
+          value={localTerm}
+          onChange={(e) => setLocalTerm(e.target.value)}
+          placeholder={siteContent.color_search_placeholder || 'جستجوی رنگ (مثال: سفید، بلوط، قهوه‌ای...)'}
+          className="w-full px-5 py-4 pr-12 pl-12 border-2 border-gray-200 rounded-button focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 outline-none transition-all text-base"
           dir="rtl"
         />
         
@@ -71,7 +64,7 @@ const ColorSearch = () => {
           <FiSearch size={20} />
         </div>
 
-        {searchTerm && (
+        {localTerm && (
           <button
             onClick={clearSearch}
             className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"

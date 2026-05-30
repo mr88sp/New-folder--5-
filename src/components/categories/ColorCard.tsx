@@ -31,7 +31,6 @@ const ColorCard = ({ color, onSelect }: ColorCardProps) => {
       glossy: 'براق',
       matte: 'مات',
       satin: 'ساتین',
-      wood: 'طرح چوب',
       stone: 'طرح سنگ',
     };
     return surfaces[surface] || surface;
@@ -49,7 +48,7 @@ const ColorCard = ({ color, onSelect }: ColorCardProps) => {
   return (
     <motion.div
       whileHover={{ y: -4 }}
-      className="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all cursor-pointer"
+      className="group bg-white rounded-card shadow-lg overflow-hidden hover:shadow-xl transition-all cursor-pointer"
       onClick={() => onSelect(color)}
     >
       {/* پیش‌نمایش رنگ */}

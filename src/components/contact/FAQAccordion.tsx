@@ -3,13 +3,16 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
-import faqData from '@/data/contact/faq.json';
+
+interface FAQAccordionProps {
+  siteContent: any;
+}
 
 /**
  * کامپوننت FAQAccordion - سوالات متداول
  * منطبق بر ساختار faq-list در contact.html
  */
-const FAQAccordion = () => {
+const FAQAccordion = ({ siteContent }: FAQAccordionProps) => {
   const [openItems, setOpenItems] = useState<string[]>([]);
 
   const toggleItem = (id: string) => {
@@ -25,19 +28,19 @@ const FAQAccordion = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.6 }}
-      className="bg-white rounded-2xl shadow-lg p-6 mb-12"
+      className="bg-white rounded-card shadow-lg p-6 mb-12"
     >
       <div className="text-center mb-6">
         <h3 className="text-xl font-bold text-gray-900 mb-2">
-          سوالات متداول
+          {siteContent.faq_title || "سوالات متداول"}
         </h3>
         <p className="text-gray-600">
-          پاسخ به رایج‌ترین سوالات مشتریان
+          {siteContent.faq_description || "پاسخ به رایج‌ترین سوالات مشتریان"}
         </p>
       </div>
 
       <div className="space-y-4">
-        {faqData.map((faq) => {
+        {siteContent.faq_items?.map((faq: any) => {
           const isOpen = openItems.includes(faq.id);
           
           return (
@@ -45,7 +48,7 @@ const FAQAccordion = () => {
               key={faq.id}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="border border-gray-200 rounded-xl overflow-hidden"
+              className="border border-gray-200 rounded-button overflow-hidden"
             >
               {/* سوال */}
               <button

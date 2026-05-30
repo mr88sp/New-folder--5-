@@ -6,18 +6,18 @@ import { FiX, FiCopy, FiShoppingCart } from 'react-icons/fi';
 import { useState } from 'react';
 import Button from '@/components/ui/Button';
 import type { Color } from '@/types/color';
-import siteData from '@/data/site.json';
 
 /**
  * کامپوننت ColorModal - مدال نمایش جزئیات رنگ
  * منطبق بر ساختار color-modal در categories.html
  */
 interface ColorModalProps {
+  siteContent: any;
   color: Color;
   onClose: () => void;
 }
 
-const ColorModal = ({ color, onClose }: ColorModalProps) => {
+const ColorModal = ({ siteContent, color, onClose }: ColorModalProps) => {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
@@ -39,7 +39,6 @@ const ColorModal = ({ color, onClose }: ColorModalProps) => {
       glossy: 'براق',
       matte: 'مات',
       satin: 'ساتین',
-      wood: 'طرح چوب',
       stone: 'طرح سنگ',
     };
     return surfaces[surface] || surface;
@@ -56,19 +55,22 @@ const ColorModal = ({ color, onClose }: ColorModalProps) => {
 
   // ساخت لینک واتساپ برای سفارش رنگ
   const getWhatsAppOrderLink = () => {
+    const siteTitle = siteContent.site_title || 'Soheili Wood';
     const message = encodeURIComponent(
       `سلام،\n\n` +
-      `از سایت Soheili Wood سفارش رنگ دارم:\n` +
+      `از سایت ${siteTitle} سفارش رنگ دارم:\n` +
       `------------------------\n` +
-      `🎨 نام رنگ: ${color.name}\n` +
-      `🎯 کد رنگ: ${color.hex}\n` +
-      `📋 کد محصول: ${color.code}\n` +
-      `✨ نوع سطح: ${getSurfaceName(color.surface)}\n` +
+      `نام رنگ: ${color.name}\n` +
+      `کد رنگ: ${color.hex}\n` +
+      `کد محصول: ${color.code}\n` +
+      `نوع سطح: ${getSurfaceName(color.surface)}\n` +
       `------------------------\n` +
       `لطفاً جهت تکمیل سفارش راهنمایی بفرمایید.`
     );
     
-    return `https://wa.me/${siteData.contact.whatsapp}?text=${message}`;
+    // شماره واتساپ از siteContent یا مقدار پیشفرض
+    const whatsapp = siteContent.contact_whatsapp || '989123456789';
+    return `https://wa.me/${whatsapp}?text=${message}`;
   };
 
   return (
@@ -85,13 +87,13 @@ const ColorModal = ({ color, onClose }: ColorModalProps) => {
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.9, opacity: 0 }}
           transition={{ type: 'spring', damping: 20 }}
-          className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full overflow-hidden"
+          className="bg-white rounded-card shadow-2xl max-w-2xl w-full overflow-hidden"
           onClick={(e) => e.stopPropagation()}
         >
           {/* هدر مدال */}
           <div className="flex justify-between items-center p-6 border-b border-gray-200">
             <h3 className="text-xl font-bold text-gray-900">
-              اطلاعات رنگ
+              {siteContent.color_modal_title || 'اطلاعات رنگ'}
             </h3>
             <button
               onClick={onClose}
@@ -107,7 +109,7 @@ const ColorModal = ({ color, onClose }: ColorModalProps) => {
               {/* نمونه رنگ */}
               <div className="md:w-1/2">
                 <div
-                  className="relative h-48 md:h-full rounded-2xl overflow-hidden shadow-lg"
+                  className="relative h-48 md:h-full rounded-card overflow-hidden shadow-lg"
                   style={{ backgroundColor: color.hex }}
                 >
                   <div className={`absolute inset-0 flex items-center justify-center ${getTextColor(color.hex)} text-2xl font-bold`}>
@@ -126,15 +128,15 @@ const ColorModal = ({ color, onClose }: ColorModalProps) => {
                 <div>
                   <h4 className="text-sm text-gray-500 mb-1">کد رنگ</h4>
                   <div className="flex items-center gap-2">
-                    <span className="font-mono text-lg bg-gray-100 px-3 py-2 rounded-lg">
+                    <span className="font-mono text-lg bg-gray-100 px-3 py-2 rounded-button">
                       {color.hex}
                     </span>
                     <button
                       onClick={copyColorCode}
-                      className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg flex items-center gap-2 transition-colors"
+                      className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-button flex items-center gap-2 transition-colors"
                     >
                       {copied ? (
-                        '✅ کپی شد!'
+                        'کپی شد!'
                       ) : (
                         <>
                           <FiCopy size={16} />

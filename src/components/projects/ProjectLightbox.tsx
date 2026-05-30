@@ -1,47 +1,52 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { 
-  FiX, 
-  FiChevronLeft, 
-  FiChevronRight, 
-  FiMapPin, 
+import { useState, useEffect } from "react";
+import CustomImage from "@/components/ui/CustomImage";
+import { motion } from "framer-motion";
+import {
+  FiX,
+  FiChevronLeft,
+  FiChevronRight,
+  FiMapPin,
   FiCalendar,
   FiUser,
-  FiMaximize2
-} from 'react-icons/fi';
-import Button from '@/components/ui/Button';
+  FiMaximize2,
+} from "react-icons/fi";
+import Button from "@/components/ui/Button";
 
 /**
  * کامپوننت ProjectLightbox - نمایش بزرگ پروژه
  */
 interface ProjectLightboxProps {
+  siteContent: any;
   project: any;
   onClose: () => void;
 }
 
-const ProjectLightbox = ({ project, onClose }: ProjectLightboxProps) => {
+const ProjectLightbox = ({
+  siteContent,
+  project,
+  onClose,
+}: ProjectLightboxProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     };
   }, []);
 
   const nextImage = () => {
-    setCurrentImageIndex((prev) => 
+    if (!project.images || project.images.length === 0) return;
+    setCurrentImageIndex((prev) =>
       prev + 1 < project.images.length ? prev + 1 : prev
     );
   };
 
   const prevImage = () => {
-    setCurrentImageIndex((prev) => 
-      prev > 0 ? prev - 1 : prev
-    );
+    if (!project.images || project.images.length === 0) return;
+    setCurrentImageIndex((prev) => (prev > 0 ? prev - 1 : prev));
   };
 
   return (
@@ -53,7 +58,7 @@ const ProjectLightbox = ({ project, onClose }: ProjectLightboxProps) => {
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-6xl bg-white rounded-3xl shadow-2xl overflow-hidden"
+        className="relative w-full max-w-6xl bg-white rounded-card shadow-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* دکمه بستن */}
@@ -67,17 +72,20 @@ const ProjectLightbox = ({ project, onClose }: ProjectLightboxProps) => {
         <div className="grid grid-cols-1 lg:grid-cols-2">
           {/* گالری تصاویر */}
           <div className="relative bg-black h-[50vh] lg:h-[70vh]">
-            <Image
-              src={project.images[currentImageIndex]}
-              alt={project.title}
-              fill
-              className="object-contain"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              priority
-            />
+            {project.images && project.images.length > 0 ? (
+              <CustomImage
+                src={project.images[currentImageIndex]}
+                alt={project.title}
+                className="object-contain w-full h-full"
+              />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center text-white">
+                تصویری موجود نیست
+              </div>
+            )}
 
             {/* دکمه‌های گالری */}
-            {project.images.length > 1 && (
+            {project.images && project.images.length > 1 && (
               <>
                 <button
                   onClick={prevImage}
@@ -97,16 +105,20 @@ const ProjectLightbox = ({ project, onClose }: ProjectLightboxProps) => {
             )}
 
             {/* شمارنده تصاویر */}
-            <div className="absolute bottom-4 right-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-sm">
-              {currentImageIndex + 1} / {project.images.length}
-            </div>
+            {project.images && project.images.length > 1 && (
+              <div className="absolute bottom-4 right-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-sm">
+                {currentImageIndex + 1} / {project.images.length}
+              </div>
+            )}
           </div>
 
           {/* اطلاعات پروژه */}
           <div className="p-6 lg:p-8 overflow-y-auto max-h-[50vh] lg:max-h-[70vh]">
             <div className="mb-6">
               <span className="inline-block bg-brand-primary text-white text-xs font-bold px-3 py-1.5 rounded-full mb-3">
-                {project.category}
+                {typeof project.category === "object"
+                  ? project.category.name
+                  : project.category}
               </span>
               <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
                 {project.title}
@@ -118,37 +130,45 @@ const ProjectLightbox = ({ project, onClose }: ProjectLightboxProps) => {
 
             {/* مشخصات پروژه */}
             <div className="grid grid-cols-2 gap-4 mb-6">
-              <div className="bg-gray-50 rounded-lg p-3">
+              <div className="bg-gray-50 rounded-button p-3">
                 <div className="flex items-center gap-2 text-gray-600 mb-1">
                   <FiMapPin size={16} />
-                  <span className="text-xs">موقعیت</span>
+                  <span className="text-xs">
+                    {siteContent.project_location_label || "موقعیت"}
+                  </span>
                 </div>
                 <span className="text-sm font-medium text-gray-900">
                   {project.location}
                 </span>
               </div>
-              <div className="bg-gray-50 rounded-lg p-3">
+              <div className="bg-gray-50 rounded-button p-3">
                 <div className="flex items-center gap-2 text-gray-600 mb-1">
                   <FiCalendar size={16} />
-                  <span className="text-xs">سال اجرا</span>
+                  <span className="text-xs">
+                    {siteContent.project_year_label || "سال اجرا"}
+                  </span>
                 </div>
                 <span className="text-sm font-medium text-gray-900">
                   {project.year}
                 </span>
               </div>
-              <div className="bg-gray-50 rounded-lg p-3">
+              <div className="bg-gray-50 rounded-button p-3">
                 <div className="flex items-center gap-2 text-gray-600 mb-1">
                   <FiUser size={16} />
-                  <span className="text-xs">کارفرما</span>
+                  <span className="text-xs">
+                    {siteContent.project_client_label || "کارفرما"}
+                  </span>
                 </div>
                 <span className="text-sm font-medium text-gray-900">
                   {project.client}
                 </span>
               </div>
-              <div className="bg-gray-50 rounded-lg p-3">
+              <div className="bg-gray-50 rounded-button p-3">
                 <div className="flex items-center gap-2 text-gray-600 mb-1">
                   <FiMaximize2 size={16} />
-                  <span className="text-xs">مساحت</span>
+                  <span className="text-xs">
+                    {siteContent.project_area_label || "مساحت"}
+                  </span>
                 </div>
                 <span className="text-sm font-medium text-gray-900">
                   {project.area}
@@ -157,46 +177,52 @@ const ProjectLightbox = ({ project, onClose }: ProjectLightboxProps) => {
             </div>
 
             {/* ویژگی‌ها */}
-            <div className="mb-6">
-              <h3 className="text-lg font-bold text-gray-900 mb-3">
-                ویژگی‌های پروژه
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {project.features.map((feature: string, index: number) => (
-                  <span
-                    key={index}
-                    className="bg-gray-100 text-gray-700 px-3 py-1.5 rounded-full text-sm"
-                  >
-                    ✓ {feature}
-                  </span>
-                ))}
+            {project.features && project.features.length > 0 && (
+              <div className="mb-6">
+                <h3 className="text-lg font-bold text-gray-900 mb-3">
+                  {siteContent.project_features_title || "ویژگی‌های پروژه"}
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {project.features.map((feature: string, index: number) => (
+                    <span
+                      key={index}
+                      className="bg-gray-100 text-gray-700 px-3 py-1.5 rounded-full text-sm"
+                    >
+                      ✓ {feature}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* متریال استفاده شده */}
-            <div className="mb-6">
-              <h3 className="text-lg font-bold text-gray-900 mb-3">
-                متریال استفاده شده
-              </h3>
-              <div className="space-y-2">
-                {project.materials.map((material: string, index: number) => (
-                  <div key={index} className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-brand-primary rounded-full"></span>
-                    <span className="text-gray-700 text-sm">{material}</span>
-                  </div>
-                ))}
+            {project.materials && project.materials.length > 0 && (
+              <div className="mb-6">
+                <h3 className="text-lg font-bold text-gray-900 mb-3">
+                  {siteContent.project_materials_title || "متریال استفاده شده"}
+                </h3>
+                <div className="space-y-2">
+                  {project.materials.map((material: string, index: number) => (
+                    <div key={index} className="flex items-center gap-2">
+                      <span className="w-2 h-2 bg-brand-primary rounded-full"></span>
+                      <span className="text-gray-700 text-sm">{material}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* دکمه استعلام */}
             <Button
-              href="https://wa.me/989123456789"
+              href={
+                siteContent.project_inquiry_link || "https://wa.me/989123456789"
+              }
               variant="primary"
               size="lg"
               className="w-full"
               target="_blank"
             >
-              استعلام قیمت
+              {siteContent.project_inquiry_button || "استعلام قیمت"}
             </Button>
           </div>
         </div>

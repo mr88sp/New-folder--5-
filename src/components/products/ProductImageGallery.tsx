@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
+import CustomImage from '@/components/ui/CustomImage';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiChevronLeft, FiChevronRight, FiMaximize2, FiX } from 'react-icons/fi';
 
@@ -39,16 +39,13 @@ const ProductImageGallery = ({ images, productName }: ProductImageGalleryProps) 
   return (
     <>
       {/* ===== گالری اصلی ===== */}
-      <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+      <div className="bg-white rounded-card shadow-lg overflow-hidden">
         {/* تصویر اصلی */}
         <div className="relative aspect-square bg-gradient-to-br from-gray-50 to-gray-100 group">
-          <Image
+          <img
             src={displayImages[currentIndex]}
             alt={`${productName} - تصویر ${currentIndex + 1}`}
-            fill
-            priority
-            className="object-contain p-4"
-            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-contain p-4 w-full h-full"
           />
 
           {/* دکمه بزرگنمایی */}
@@ -89,18 +86,16 @@ const ProductImageGallery = ({ images, productName }: ProductImageGalleryProps) 
                 <button
                   key={index}
                   onClick={() => selectImage(index)}
-                  className={`relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all ${
+                  className={`relative flex-shrink-0 w-20 h-20 rounded-button overflow-hidden border-2 transition-all ${
                     currentIndex === index
                       ? 'border-brand-primary shadow-md scale-105'
                       : 'border-transparent hover:border-gray-300'
                   }`}
                 >
-                  <Image
+                  <img
                     src={image}
                     alt={`${productName} - thumbnail ${index + 1}`}
-                    fill
-                    className="object-cover"
-                    sizes="80px"
+                    className="object-cover w-full h-full"
                   />
                 </button>
               ))}
@@ -138,13 +133,10 @@ const ProductImageGallery = ({ images, productName }: ProductImageGalleryProps) 
               className="relative w-[90vw] h-[80vh]"
               onClick={(e) => e.stopPropagation()}
             >
-              <Image
+              <img
                 src={displayImages[currentIndex]}
                 alt={`${productName} - بزرگنمایی ${currentIndex + 1}`}
-                fill
-                className="object-contain"
-                sizes="90vw"
-                priority
+                className="object-contain w-full h-full"
               />
             </div>
 

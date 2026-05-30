@@ -1,0 +1,32 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Breadcrumb from '../components/layout/Breadcrumb';
+import ProductPageContent from '../components/products/ProductPageContent';
+import { getProducts, getCategories } from '../utils/api';
+
+// دریافت محصولات از API
+const rawProducts = await getProducts('product');
+const products = Array.isArray(rawProducts) ? rawProducts : [];
+
+const rawCategories = await getCategories();
+const categories = Array.isArray(rawCategories) ? rawCategories : [];
+
+// console.log('Fetched products count:', products.length);
+// console.log('Fetched categories count:', categories.length);
+
+const categoryParam = Astro.url.searchParams.get('category');
+const brandParam = Astro.url.searchParams.get('brand');
+const minPriceParam = Astro.url.searchParams.get('minPrice');
+const maxPriceParam = Astro.url.searchParams.get('maxPrice');
+const sortParam = Astro.url.searchParams.get('sort');
+const searchParam = Astro.url.searchParams.get('q');
+const pageParam = Astro.url.searchParams.get('page');
+---
+
+<MainLayout title="محصولات">
+  <div class="pb-16">
+    <Breadcrumb client:load />
+    
+    <ProductPageContent products={products} categories={categories} client:load />
+  </div>
+</MainLayout>

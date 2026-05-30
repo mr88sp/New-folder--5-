@@ -12,11 +12,12 @@ import type { PriceCategory } from '@/types/price';
  * منطبق بر ساختار price-table در price.html
  */
 interface PriceTableProps {
+  siteContent: any;
   category: PriceCategory;
   defaultOpen?: boolean;
 }
 
-const PriceTable = ({ category, defaultOpen = false }: PriceTableProps) => {
+const PriceTable = ({ siteContent, category, defaultOpen = false }: PriceTableProps) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   // وضعیت موجودی
@@ -26,28 +27,35 @@ const PriceTable = ({ category, defaultOpen = false }: PriceTableProps) => {
         return (
           <span className="inline-flex items-center gap-1 text-xs text-green-600 bg-green-50 px-2 py-1 rounded-full">
             <span className="w-1.5 h-1.5 bg-green-600 rounded-full"></span>
-            موجود
+            {siteContent.price_stock_available || 'موجود'}
           </span>
         );
       case 'محدود':
         return (
           <span className="inline-flex items-center gap-1 text-xs text-orange-600 bg-orange-50 px-2 py-1 rounded-full">
             <span className="w-1.5 h-1.5 bg-orange-600 rounded-full"></span>
-            محدود
+            {siteContent.price_stock_limited || 'محدود'}
+          </span>
+        );
+      case 'تماس بگیرید':
+        return (
+          <span className="inline-flex items-center gap-1 text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded-full">
+            <span className="w-1.5 h-1.5 bg-blue-600 rounded-full"></span>
+            تماس بگیرید
           </span>
         );
       default:
         return (
           <span className="inline-flex items-center gap-1 text-xs text-red-600 bg-red-50 px-2 py-1 rounded-full">
             <span className="w-1.5 h-1.5 bg-red-600 rounded-full"></span>
-            ناموجود
+            {siteContent.price_stock_unavailable || 'ناموجود'}
           </span>
         );
     }
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-6">
+    <div className="bg-white rounded-card shadow-lg overflow-hidden mb-6">
       {/* هدر دسته‌بندی */}
       <div
         onClick={() => setIsOpen(!isOpen)}
@@ -58,12 +66,12 @@ const PriceTable = ({ category, defaultOpen = false }: PriceTableProps) => {
             {category.name}
           </h3>
           <p className="text-sm text-gray-500">
-            {category.products.length} محصول
+            {category.products?.length || 0} {siteContent.price_products_count_label || 'محصول'}
           </p>
         </div>
         <div className="flex items-center gap-3">
           <span className="text-sm text-gray-500">
-            آخرین بروزرسانی: ۱۴۰۳/۱۰/۲۵
+            {siteContent.price_last_update_label || 'آخرین بروزرسانی'}: {siteContent.price_last_update || '۱۴۰۳/۱۰/۲۵'}
           </span>
           {isOpen ? (
             <FiChevronUp className="text-gray-400" size={24} />
@@ -88,25 +96,25 @@ const PriceTable = ({ category, defaultOpen = false }: PriceTableProps) => {
                 <thead className="bg-gray-50">
                   <tr>
                     <th className="px-6 py-4 text-right text-sm font-semibold text-gray-700">
-                      ضخامت (mm)
+                      {siteContent.price_table_thickness_label || 'ضخامت (mm)'}
                     </th>
                     <th className="px-6 py-4 text-right text-sm font-semibold text-gray-700">
-                      ابعاد (mm)
+                      {siteContent.price_table_dimensions_label || 'ابعاد (mm)'}
                     </th>
                     <th className="px-6 py-4 text-right text-sm font-semibold text-gray-700">
-                      کارخانه
+                      {siteContent.price_table_factory_label || 'کارخانه'}
                     </th>
                     <th className="px-6 py-4 text-right text-sm font-semibold text-gray-700">
-                      قیمت واحد
+                      {siteContent.price_table_unit_price_label || 'قیمت واحد'}
                     </th>
                     <th className="px-6 py-4 text-right text-sm font-semibold text-gray-700">
-                      قیمت متر مربع
+                      {siteContent.price_table_square_meter_price_label || 'قیمت متر مربع'}
                     </th>
                     <th className="px-6 py-4 text-right text-sm font-semibold text-gray-700">
-                      موجودی
+                      {siteContent.price_table_stock_label || 'موجودی'}
                     </th>
                     <th className="px-6 py-4 text-center text-sm font-semibold text-gray-700">
-                      سفارش
+                      {siteContent.price_table_order_label || 'سفارش'}
                     </th>
                   </tr>
                 </thead>
@@ -128,8 +136,10 @@ const PriceTable = ({ category, defaultOpen = false }: PriceTableProps) => {
                       <td className="px-6 py-4 text-sm text-gray-600">
                         {product.factory}
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-900 font-bold">
-                        {formatPrice(product.unitPrice)}
+                      <td className="px-6 py-4 text-sm text-gray-900">
+                        <span className="product-price text-brand-primary">
+                          {formatPrice(product.unitPrice)}
+                        </span>
                       </td>
                       <td className="px-6 py-4 text-sm text-gray-600">
                         {formatPrice(product.squareMeterPrice)}
@@ -139,16 +149,14 @@ const PriceTable = ({ category, defaultOpen = false }: PriceTableProps) => {
                       </td>
                       <td className="px-6 py-4 text-center">
                         <Button
-                          href={`https://wa.me/989123456789?text=${encodeURIComponent(
-                            `سلام،\nقیمت و موجودی ${category.name} با ضخامت ${product.thickness}mm و ابعاد ${product.dimensions} را می‌خواستم.`
-                          )}`}
+                          href={siteContent.whatsapp_link || 'https://wa.me/989123456789'}
                           variant="secondary"
                           size="sm"
                           className="inline-flex items-center gap-1"
                           target="_blank"
                         >
                           <FiShoppingCart size={14} />
-                          <span>استعلام</span>
+                          <span>{siteContent.price_order_button || 'استعلام'}</span>
                         </Button>
                       </td>
                     </motion.tr>

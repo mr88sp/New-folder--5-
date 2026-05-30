@@ -1,0 +1,20 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Breadcrumb from '../components/layout/Breadcrumb';
+import AboutPageContent from '../components/about/AboutPageContent';
+import { getSiteContent } from '../utils/api';
+
+// دریافت محتوای سایت از API
+const siteContent = await getSiteContent();
+---
+
+<MainLayout 
+  title="درباره ما"
+  description={siteContent.about_page_description || "درباره فروشگاه سهیلی و تاریخچه ما در صنعت چوب و MDF"} 
+  keywords={siteContent.about_page_keywords || "درباره ما, فروشگاه سهیلی, تاریخچه, صنعت چوب, MDF"}>
+  <div class="pb-16">
+    <Breadcrumb client:load />
+    
+    <AboutPageContent siteContent={siteContent} client:load />
+  </div>
+</MainLayout>

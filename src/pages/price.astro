@@ -1,0 +1,23 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Breadcrumb from '../components/layout/Breadcrumb';
+import PricePageContent from '../components/price/PricePageContent';
+import { getSiteContent, getProducts, getPriceTables } from '../utils/api';
+
+// دریافت محتوای سایت از API
+const siteContent = await getSiteContent();
+
+// دریافت محصولات از API
+const products = await getProducts('price_list');
+
+// دریافت جداول قیمت داینامیک
+const priceTables = await getPriceTables();
+---
+
+<MainLayout title={siteContent.price_page_title || "استعلام قیمت"}>
+  <div class="pb-16">
+    <Breadcrumb client:load />
+    
+    <PricePageContent siteContent={siteContent} products={products} priceTables={priceTables} client:load />
+  </div>
+</MainLayout>

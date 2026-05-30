@@ -9,10 +9,11 @@ import Button from '@/components/ui/Button';
  * منطبق بر ساختار price-filter در price.html
  */
 interface PriceFilterProps {
+  siteContent: any;
   onFilterChange: (filter: any) => void;
 }
 
-const PriceFilter = ({ onFilterChange }: PriceFilterProps) => {
+const PriceFilter = ({ siteContent, onFilterChange }: PriceFilterProps) => {
   const [selectedType, setSelectedType] = useState('');
   const [selectedThickness, setSelectedThickness] = useState('');
   const [selectedSize, setSelectedSize] = useState('');
@@ -61,24 +62,24 @@ const PriceFilter = ({ onFilterChange }: PriceFilterProps) => {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
+    <div className="bg-white rounded-card shadow-lg p-6 mb-8">
       <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 bg-brand-primary/10 rounded-lg flex items-center justify-center">
+        <div className="w-10 h-10 bg-brand-primary/10 rounded-button flex items-center justify-center">
           <FiFilter className="text-brand-primary" size={20} />
         </div>
-        <h3 className="text-lg font-bold text-gray-900">فیلتر قیمت</h3>
+        <h3 className="text-lg font-bold text-gray-900">{siteContent.price_filter_title || 'فیلتر قیمت'}</h3>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         {/* نوع ورق */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            نوع ورق
+            {siteContent.price_filter_type_label || 'نوع ورق'}
           </label>
           <select
             value={selectedType}
             onChange={(e) => setSelectedType(e.target.value)}
-            className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary outline-none transition-all bg-white"
+            className="w-full px-4 py-2.5 border border-gray-300 rounded-button focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary outline-none transition-all bg-white"
           >
             {productTypes.map((type) => (
               <option key={type.id} value={type.id}>
@@ -91,12 +92,12 @@ const PriceFilter = ({ onFilterChange }: PriceFilterProps) => {
         {/* ضخامت */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            ضخامت
+            {siteContent.price_filter_thickness_label || 'ضخامت'}
           </label>
           <select
             value={selectedThickness}
             onChange={(e) => setSelectedThickness(e.target.value)}
-            className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary outline-none transition-all bg-white"
+            className="w-full px-4 py-2.5 border border-gray-300 rounded-button focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary outline-none transition-all bg-white"
           >
             {thicknesses.map((thickness) => (
               <option key={thickness.id} value={thickness.id}>
@@ -109,12 +110,12 @@ const PriceFilter = ({ onFilterChange }: PriceFilterProps) => {
         {/* ابعاد */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            سایز
+            {siteContent.price_filter_size_label || 'سایز'}
           </label>
           <select
             value={selectedSize}
             onChange={(e) => setSelectedSize(e.target.value)}
-            className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary outline-none transition-all bg-white"
+            className="w-full px-4 py-2.5 border border-gray-300 rounded-button focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary outline-none transition-all bg-white"
           >
             {sizes.map((size) => (
               <option key={size.id} value={size.id}>
@@ -127,11 +128,11 @@ const PriceFilter = ({ onFilterChange }: PriceFilterProps) => {
         {/* دکمه‌ها */}
         <div className="flex items-end gap-3">
           <Button onClick={applyFilter} variant="primary" className="flex-1">
-            اعمال فیلتر
+            {siteContent.price_filter_apply_button || 'اعمال فیلتر'}
           </Button>
           {(selectedType || selectedThickness || selectedSize) && (
             <Button onClick={resetFilter} variant="ghost" className="px-4">
-              حذف
+              {siteContent.price_filter_reset_button || 'حذف'}
             </Button>
           )}
         </div>

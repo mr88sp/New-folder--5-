@@ -5,20 +5,26 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ProjectCard from './ProjectCard';
 import ProjectCategories from './ProjectCategories';
 import ProjectLightbox from './ProjectLightbox';
-import projectsData from '@/data/projects/projects.json';
+interface ProjectGalleryProps {
+  siteContent: any;
+  products: any[];
+}
 
 /**
  * کامپوننت ProjectGallery - گالری پروژه‌ها
  */
-const ProjectGallery = () => {
+const ProjectGallery = ({ siteContent, products }: ProjectGalleryProps) => {
   const [activeCategory, setActiveCategory] = useState('all');
   const [selectedProject, setSelectedProject] = useState(null);
   const [lightboxOpen, setLightboxOpen] = useState(false);
 
   // فیلتر پروژه‌ها بر اساس دسته‌بندی
   const filteredProjects = activeCategory === 'all'
-    ? projectsData
-    : projectsData.filter(p => p.category === activeCategory);
+    ? products
+    : products.filter(p => {
+        const catName = typeof p.category === 'object' ? p.category.name : p.category;
+        return catName === activeCategory;
+    });
 
   // باز کردن جزئیات پروژه
   const handleViewDetails = (project: any) => {
@@ -30,6 +36,8 @@ const ProjectGallery = () => {
     <>
       {/* دسته‌بندی پروژه‌ها */}
       <ProjectCategories
+        siteContent={siteContent}
+        products={products}
         activeCategory={activeCategory}
         onCategoryChange={setActiveCategory}
       />
@@ -37,10 +45,10 @@ const ProjectGallery = () => {
       {/* آمار پروژه‌ها */}
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-xl font-bold text-gray-900">
-          پروژه‌های اجرا شده
+          {siteContent.projects_gallery_title || 'پروژه‌های اجرا شده'}
         </h2>
         <span className="bg-brand-primary/10 text-brand-primary px-4 py-2 rounded-full text-sm font-medium">
-          {filteredProjects.length} پروژه
+          {filteredProjects.length} {siteContent.projects_gallery_count_text || 'پروژه'}
         </span>
       </div>
 
@@ -53,6 +61,7 @@ const ProjectGallery = () => {
           {filteredProjects.map((project) => (
             <ProjectCard
               key={project.id}
+              siteContent={siteContent}
               project={project}
               onViewDetails={handleViewDetails}
             />
@@ -62,10 +71,10 @@ const ProjectGallery = () => {
         <div className="text-center py-16">
           <div className="text-6xl mb-4 text-gray-300">🏗️</div>
           <h3 className="text-xl font-bold text-gray-900 mb-2">
-            پروژه‌ای یافت نشد!
+            {siteContent.projects_no_projects_title || 'پروژه‌ای یافت نشد!'}
           </h3>
           <p className="text-gray-600">
-            هیچ پروژه‌ای در این دسته‌بندی وجود ندارد.
+            {siteContent.projects_no_projects_text || 'هیچ پروژه‌ای در این دسته‌بندی وجود ندارد.'}
           </p>
         </div>
       )}
@@ -74,6 +83,7 @@ const ProjectGallery = () => {
       <AnimatePresence>
         {lightboxOpen && selectedProject && (
           <ProjectLightbox
+            siteContent={siteContent}
             project={selectedProject}
             onClose={() => setLightboxOpen(false)}
           />

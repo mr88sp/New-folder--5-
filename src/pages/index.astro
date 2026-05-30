@@ -1,0 +1,78 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import HeroSection from '../components/home/HeroSection';
+import HeroFeatures from '../components/home/HeroFeatures';
+import WhyMDFSection from '../components/home/WhyMDFSection';
+import FeaturedProducts from '../components/home/FeaturedProducts';
+import Container from '../components/ui/Container';
+import Button from '../components/ui/Button';
+import { FiPhone, FiMessageCircle } from 'react-icons/fi';
+import { getSiteContent, getProducts, getSliderSlides } from '../utils/api';
+
+// دریافت محصولات از API
+const allProducts = await getProducts('product');
+
+// دریافت محتوای سایت از API
+const siteContent = await getSiteContent();
+
+// دریافت اسلایدهای اسلایدر از API
+const sliderSlides = await getSliderSlides();
+
+const featuredProducts = allProducts.slice(0, 4);
+---
+
+<MainLayout>
+  <div class="flex flex-col">
+    {/* ===== بخش هیرو ===== */}
+    <HeroSection client:load slides={sliderSlides} siteContent={siteContent} />
+    
+    {/* ===== ویژگی‌های هیرو ===== */}
+    <HeroFeatures client:load />
+
+    {/* ===== چرا MDF سهیلی ===== */}
+    <WhyMDFSection client:load siteContent={siteContent} />
+
+    {/* ===== محصولات ویژه ===== */}
+    <FeaturedProducts products={featuredProducts} client:load />
+
+    {/* ===== بخش تماس سریع ===== */}
+    <section class="py-16 bg-gradient-to-r from-brand-primary to-brand-dark text-white">
+      <Container client:load>
+        <div class="text-center max-w-3xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">
+            {siteContent.hero_section_title || 'آماده دریافت سفارش شما هستیم'}
+          </h2>
+          <p class="text-xl mb-8 opacity-90 leading-relaxed">
+            {siteContent.hero_section_description || 'برای استعلام قیمت، مشاوره تخصصی و ثبت سفارش، همین حالا با ما تماس بگیرید'}
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              href={`tel:${siteContent.contact_page_phone}`}
+              variant="primary"
+              size="lg"
+              className="bg-white text-brand-primary hover:bg-gray-100 flex items-center gap-2"
+              client:load
+            >
+              <FiPhone />
+              <span>تماس تلفنی: {siteContent.contact_page_phone}</span>
+            </Button>
+            <Button
+              href={siteContent.whatsapp_link || '#'} 
+              variant="secondary"
+              size="lg"
+              className="bg-green-600 hover:bg-green-700 text-white flex items-center gap-2"
+              target="_blank"
+              client:load
+            >
+              <FiMessageCircle />
+              <span>مشاوره رایگان در واتساپ</span>
+            </Button>
+          </div>
+          <p class="text-sm opacity-75 mt-6">
+            * پاسخگویی ۲۴ ساعته، حتی روزهای تعطیل
+          </p>
+        </div>
+      </Container>
+    </section>
+  </div>
+</MainLayout>

@@ -1,12 +1,11 @@
-import { ButtonHTMLAttributes, ReactNode } from 'react';
-import Link from 'next/link';
+import { ButtonHTMLAttributes, ReactNode } from "react";
 
 /**
  * کامپوننت Button - دکمه‌های قابل استفاده در سراسر سایت
  * منطبق بر کلاس‌های btn در CSS قبلی
  */
-export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost';
-export type ButtonSize = 'sm' | 'md' | 'lg';
+export type ButtonVariant = "primary" | "secondary" | "outline" | "ghost";
+export type ButtonSize = "sm" | "md" | "lg";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
@@ -20,40 +19,45 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const Button = ({
   children,
-  variant = 'primary',
-  size = 'md',
+  variant = "primary",
+  size = "md",
   href,
   fullWidth = false,
-  className = '',
+  className = "",
   ...props
 }: ButtonProps) => {
   // استایل‌های پایه
-  const baseClasses = 'inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2';
-  
+  const baseClasses =
+    "inline-flex items-center justify-center rounded-button font-bold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95";
+
   // استایل‌های اندازه
   const sizeClasses = {
-    sm: 'px-4 py-2 text-sm',
-    md: 'px-6 py-3 text-base',
-    lg: 'px-8 py-4 text-lg',
+    sm: "px-4 py-2 text-sm",
+    md: "px-6 py-3 text-base",
+    lg: "px-8 py-4 text-lg shadow-lg hover:shadow-xl",
   };
-  
+
   // استایل‌های نوع دکمه
   const variantClasses = {
-    primary: 'bg-brand-primary text-white hover:bg-brand-dark focus:ring-brand-primary/50',
-    secondary: 'bg-brand-secondary text-white hover:bg-[#d35400] focus:ring-brand-secondary/50',
-    outline: 'border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white focus:ring-brand-primary/50',
-    ghost: 'text-gray-700 hover:bg-gray-100 hover:text-brand-primary focus:ring-gray-500/50',
+    primary:
+      "bg-brand-primary text-brand-light hover:bg-brand-dark focus:ring-brand-primary/50 shadow-brand-primary/20",
+    secondary:
+      "bg-brand-accent text-brand-dark hover:bg-brand-accent/90 focus:ring-brand-accent/50 shadow-brand-accent/20",
+    outline:
+      "border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-brand-light focus:ring-brand-primary/50",
+    ghost:
+      "text-brand-dark hover:bg-brand-primary/10 hover:text-brand-primary focus:ring-brand-primary/30",
   };
-  
-  const widthClass = fullWidth ? 'w-full' : '';
+
+  const widthClass = fullWidth ? "w-full" : "";
   const combinedClasses = `${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${widthClass} ${className}`;
 
   // اگر href وجود داشته باشد، به عنوان لینک رندر می‌شود
   if (href) {
     return (
-      <Link href={href} className={combinedClasses}>
+      <a href={href} className={combinedClasses} {...props}>
         {children}
-      </Link>
+      </a>
     );
   }
 

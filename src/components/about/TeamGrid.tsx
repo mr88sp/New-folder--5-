@@ -1,39 +1,42 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
+import CustomImage from '@/components/ui/CustomImage';
 import { FiLinkedin, FiInstagram, FiMail } from 'react-icons/fi';
-import teamData from '@/data/about/team.json';
+
+interface TeamGridProps {
+  siteContent: any;
+}
 
 /**
  * کامپوننت TeamGrid - اعضای تیم
  * منطبق بر ساختار team-grid در about.html
  */
-const TeamGrid = () => {
+const TeamGrid = ({ siteContent }: TeamGridProps) => {
   return (
     <div className="mb-16">
       <div className="text-center mb-12">
         <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
-          تیم ما
+          {siteContent.team_title || "تیم ما"}
         </h2>
         <p className="text-gray-600 max-w-2xl mx-auto">
-          متخصصان با تجربه ما که پشتیبان شما هستند
+          {siteContent.team_description || "متخصصان با تجربه ما که پشتیبان شما هستند"}
         </p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {teamData.map((member, index) => (
+        {(siteContent.team_items || siteContent.team_members || []).map((member: any, index: number) => (
           <motion.div
             key={member.id}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all hover:-translate-y-2"
+            className="group bg-white rounded-card shadow-lg overflow-hidden hover:shadow-xl transition-all hover:-translate-y-2"
           >
             {/* عکس پروفایل */}
             <div className="relative h-64 bg-gradient-to-br from-gray-100 to-gray-200">
               {member.image ? (
-                <Image
+                <CustomImage
                   src={member.image}
                   alt={member.name}
                   fill

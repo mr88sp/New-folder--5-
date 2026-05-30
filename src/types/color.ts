@@ -8,10 +8,10 @@ export type ColorFamily =
   | 'all'        // همه
   | 'white'      // سفید
   | 'cream'      // کرم
-  | 'brown'      // قهوه‌ای
   | 'gray'       // خاکستری
   | 'black'      // مشکی
-  | 'wood'       // چوبی
+  | 'blue'       // آبی
+  | 'navy'       // سرمه‌ای
   | 'colorful';  // رنگی
 
 // ============ نوع سطح ============
@@ -20,7 +20,6 @@ export type SurfaceType =
   | 'glossy'     // براق
   | 'matte'      // مات
   | 'satin'      // ساتین
-  | 'wood'       // طرح چوب
   | 'stone';     // طرح سنگ
 
 // ============ مدل رنگ ============

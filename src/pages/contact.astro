@@ -1,0 +1,55 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Breadcrumb from '../components/layout/Breadcrumb';
+import Container from '../components/ui/Container';
+import ContactCards from '../components/contact/ContactCards';
+import WorkingHours from '../components/contact/WorkingHours';
+import MapSection from '../components/contact/MapSection';
+import DepartmentsGrid from '../components/contact/DepartmentsGrid';
+import SocialLinks from '../components/contact/SocialLinks';
+import FAQAccordion from '../components/contact/FAQAccordion';
+import EmergencyBanner from '../components/contact/EmergencyBanner';
+import { getSiteContent } from '../utils/api';
+
+// دریافت محتوای سایت از API
+const siteContent = await getSiteContent();
+---
+
+<MainLayout title="تماس با ما" description={siteContent.contact_page_description || "برای دریافت مشاوره، استعلام قیمت و هرگونه سوال، با راه‌های ارتباطی زیر در تماس باشید"} keywords={siteContent.contact_page_keywords || "تماس با ما, تلفن, ایمیل, آدرس, فروشگاه سهیلی"}>
+  <div class="pb-16">
+    <Breadcrumb client:load />
+    
+    <Container className="pt-8" client:load>
+      {/* هدر صفحه */}
+      <div class="text-center mb-8">
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          {siteContent.contact_page_title || 'تماس با ما'}
+        </h1>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          {siteContent.contact_page_subtitle || 'برای دریافت مشاوره، استعلام قیمت و هرگونه سوال، با راه‌های ارتباطی زیر در تماس باشید'}
+        </p>
+      </div>
+
+      {/* کارت‌های اطلاعات تماس */}
+      <ContactCards siteContent={siteContent} client:load />
+
+      {/* ساعت کاری و نقشه */}
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <WorkingHours siteContent={siteContent} client:load />
+        <MapSection siteContent={siteContent} client:load />
+      </div>
+
+      {/* دپارتمان‌ها */}
+      <DepartmentsGrid siteContent={siteContent} client:load />
+
+      {/* شبکه‌های اجتماعی */}
+      <SocialLinks siteContent={siteContent} client:load />
+
+      {/* سوالات متداول */}
+      <FAQAccordion siteContent={siteContent} client:load />
+
+      {/* پشتیبانی اضطراری */}
+      <EmergencyBanner siteContent={siteContent} client:load />
+    </Container>
+  </div>
+</MainLayout>

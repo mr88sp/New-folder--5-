@@ -1,25 +1,54 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useMemo } from 'react';
 
 /**
  * کامپوننت ProjectCategories - فیلتر دسته‌بندی پروژه‌ها
  */
 interface ProjectCategoriesProps {
+  siteContent: any;
+  products?: any[];
   activeCategory: string;
   onCategoryChange: (category: string) => void;
 }
 
-const ProjectCategories = ({ activeCategory, onCategoryChange }: ProjectCategoriesProps) => {
-  const categories = [
-    { id: 'all', name: 'همه پروژه‌ها', icon: '🏗️', count: 6 },
-    { id: 'آشپزخانه', name: 'آشپزخانه', icon: '🍳', count: 1 },
-    { id: 'اتاق خواب', name: 'اتاق خواب', icon: '🛏️', count: 1 },
-    { id: 'درب', name: 'درب', icon: '🚪', count: 1 },
-    { id: 'اداری', name: 'اداری', icon: '💼', count: 1 },
-    { id: 'سرویس بهداشتی', name: 'سرویس بهداشتی', icon: '🚿', count: 1 },
-    { id: 'تجاری', name: 'تجاری', icon: '🏪', count: 1 },
-  ];
+const ProjectCategories = ({ siteContent, products = [], activeCategory, onCategoryChange }: ProjectCategoriesProps) => {
+  const categories = useMemo(() => {
+    if (siteContent.project_categories) return siteContent.project_categories;
+
+    const allCount = products.length;
+    const cats = new Map();
+
+    products.forEach(p => {
+      if (p.category) {
+        const catName = typeof p.category === 'object' ? p.category.name : p.category;
+        cats.set(catName, (cats.get(catName) || 0) + 1);
+      }
+    });
+
+    const dynamicCategories = [
+      { id: 'all', name: siteContent.projects_all_label || 'همه پروژه‌ها', icon: '🏗️', count: allCount }
+    ];
+
+    cats.forEach((count, name) => {
+      dynamicCategories.push({
+        id: name,
+        name: name,
+        icon: '📁', // Default icon
+        count: count
+      });
+    });
+
+    // If no products, use fallback for preview
+    if (dynamicCategories.length === 1 && allCount === 0) {
+        return [
+            { id: 'all', name: 'همه پروژه‌ها', icon: '🏗️', count: 0 },
+        ];
+    }
+
+    return dynamicCategories;
+  }, [siteContent, products]);
 
   return (
     <div className="flex flex-wrap justify-center gap-3 mb-8">

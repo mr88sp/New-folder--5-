@@ -1,13 +1,16 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import socialData from '@/data/contact/social.json';
+
+interface SocialLinksProps {
+  siteContent: any;
+}
 
 /**
  * کامپوننت SocialLinks - شبکه‌های اجتماعی
  * منطبق بر ساختار social-grid در contact.html
  */
-const SocialLinks = () => {
+const SocialLinks = ({ siteContent }: SocialLinksProps) => {
   // رنگ‌های هر پلتفرم
   const platformColors = {
     whatsapp: 'bg-green-500 hover:bg-green-600',
@@ -22,19 +25,19 @@ const SocialLinks = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.5 }}
-      className="bg-white rounded-2xl shadow-lg p-6 mb-12"
+      className="bg-white rounded-card shadow-lg p-6 mb-12"
     >
       <div className="text-center mb-6">
         <h3 className="text-xl font-bold text-gray-900 mb-2">
-          ما را در شبکه‌های اجتماعی دنبال کنید
+          {siteContent.social_links_title || "ما را در شبکه‌های اجتماعی دنبال کنید"}
         </h3>
         <p className="text-gray-600">
-          برای دریافت جدیدترین اخبار و تخفیف‌ها
+          {siteContent.social_links_description || "برای دریافت جدیدترین اخبار و تخفیف‌ها"}
         </p>
       </div>
 
       <div className="flex flex-wrap justify-center gap-4">
-        {socialData.map((social, index) => (
+        {siteContent.social_links?.map((social: any, index: number) => (
           <motion.a
             key={social.id}
             href={social.url}
@@ -44,7 +47,7 @@ const SocialLinks = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3, delay: index * 0.1 }}
             className={`
-              w-16 h-16 rounded-2xl flex flex-col items-center justify-center gap-1
+              w-16 h-16 rounded-card flex flex-col items-center justify-center gap-1
               text-white shadow-lg hover:shadow-xl transition-all hover:-translate-y-2
               ${platformColors[social.platform as keyof typeof platformColors]}
             `}

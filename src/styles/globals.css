@@ -1,3 +1,162 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Variables are now injected via MainLayout.astro from database */
+
+/* ===== تنظیمات پایه سایت ===== */
+
+body {
+  background-color: #f8fafc;
+  color: #0f172a;
+  font-family: var(--font-vazir), -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+  font-feature-settings: "ss01";
+}
+
+/* ===== کارت‌ها ===== */
+
+.card,
+.product-card {
+  background-color: #ffffff;
+  border-radius: var(--radius-card);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.card:hover,
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  border-color: var(--brand-primary);
+}
+
+/* ===== دکمه‌ها ===== */
+
+.btn-primary {
+  background-color: var(--brand-primary);
+  color: #f8fafc;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  filter: brightness(0.9);
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+}
+
+.btn-secondary {
+  background-color: var(--brand-secondary);
+  color: #f8fafc;
+}
+
+/* ===== Marquee Animation ===== */
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee linear infinite;
+  display: inline-block;
+  white-space: nowrap;
+  /* Ensure direction is LTR for transform to work as expected, or adjust transform for RTL */
+  direction: ltr;
+}
+
+.btn-secondary:hover {
+  filter: brightness(0.9);
+  box-shadow: 0 10px 20px rgba(100, 116, 139, 0.2);
+}
+
+/* ===== هدر ===== */
+
+header {
+  backdrop-filter: blur(12px);
+  background-color: #ffffff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+header a,
+header button {
+  color: #1e293b;
+}
+
+header a:hover,
+header button:hover {
+  color: var(--brand-primary);
+}
+
+/* ===== فوتر ===== */
+
+footer {
+  background-color: #0f172a;
+  color: #94a3b8;
+  border-top: 4px solid var(--brand-primary);
+}
+
+/* ===== قیمت محصولات ===== */
+
+.product-price {
+  font-family: var(--font-vazir), sans-serif;
+  font-weight: 900;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-price-large {
+  font-family: var(--font-vazir), sans-serif;
+  font-weight: 900;
+  font-size: 2.25rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== مودال محصولات ===== */
+
+.product-modal {
+  backdrop-filter: blur(16px);
+  background-color: rgba(15, 23, 42, 0.8);
+}
+
+.product-modal-content {
+  background: #ffffff;
+  border-radius: var(--radius-card);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* ===== رسپانسیو موبایل ===== */
+
+@media (max-width: 640px) {
+  .product-price {
+    font-size: 1.25rem;
+  }
+
+  .product-price-large {
+    font-size: 1.75rem;
+  }
+
+  .product-modal-content {
+    border-radius: var(--radius-card);
+    margin: 0 8px;
+  }
+}
+
+/* ===== هیرو سکشن ===== */
+
+.hero {
+  background: linear-gradient(
+    145deg,
+    #1e3a8a 0%,
+    /* Navy */ #0f172a 100% /* Midnight */
+  );
+  color: #f8fafc;
+}

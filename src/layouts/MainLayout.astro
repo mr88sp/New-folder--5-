@@ -1,0 +1,82 @@
+---
+import Layout from '../components/layout/Layout';
+import '../styles/globals.css';
+import { getSiteContent } from '../utils/api';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+// دریافت محتوای سایت از API
+const siteContent = await getSiteContent();
+
+const title = Astro.props.title || siteContent.site_title || 'فروشگاه سهیلی';
+const description = Astro.props.description || siteContent.site_description || 'فروشگاه تخصصی MDF و ورق کابینت';
+const keywords = siteContent.site_keywords || 'MDF, ورق کابینت, چوب, فروشگاه سهیلی';
+const ogImage = siteContent.site_og_image || '/images/og-image.jpg';
+const domain = siteContent.site_domain || 'soheiliwood.com';
+const brandName = siteContent.brand_name || 'فروشگاه سهیلی';
+const favicon = siteContent.site_favicon || '/favicon.ico';
+---
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="font-vazir">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href={favicon} />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content={brandName} />
+    <meta name="creator" content={brandName} />
+    <meta name="publisher" content={brandName} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={`https://${domain}${Astro.url.pathname}`} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage || '/images/og-image.jpg'} />
+    <meta property="og:site_name" content={brandName} />
+    <meta property="og:locale" content="fa_IR" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={`https://${domain}${Astro.url.pathname}`} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage || '/images/og-image.jpg'} />
+
+    <!-- Robots -->
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1" />
+
+    <!-- Vazirmatn Font -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-Variable-font-face.css" rel="stylesheet" type="text/css" />
+
+    <style is:global define:vars={{
+      'brand-primary': siteContent.theme_color_primary || '#1e3a8a',
+      'brand-secondary': siteContent.theme_color_secondary || '#334155',
+      'brand-accent': siteContent.theme_color_accent || '#0ea5e9',
+      'radius-card': (siteContent.theme_radius_card !== undefined ? siteContent.theme_radius_card : '0.5') + 'rem',
+      'radius-button': (siteContent.theme_radius_button !== undefined ? siteContent.theme_radius_button : '0.375') + 'rem',
+    }}>
+      :root {
+        --brand-primary: var(--brand-primary);
+        --brand-secondary: var(--brand-secondary);
+        --brand-accent: var(--brand-accent);
+        --radius-card: var(--radius-card);
+        --radius-button: var(--radius-button);
+      }
+    </style>
+  </head>
+  <body class="font-sans antialiased">
+    <Layout siteContent={siteContent}>
+      <slot />
+    </Layout>
+  </body>
+</html>

@@ -1,10 +1,23 @@
 'use client';
 
-import Link from 'next/link';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { FiChevronLeft } from 'react-icons/fi';
-import type { Product } from '@/types/product';
+
+interface Product {
+  id: number;
+  name: string;
+  description: string;
+  price: string;
+  image_url: string;
+  image_path?: string;
+  isFeatured?: boolean;
+  images?: string[];
+  stockStatus?: string;
+  badge?: string;
+  thickness?: string;
+  dimensions?: string;
+  brand?: string;
+}
 
 /**
  * کامپوننت RelatedProducts - نمایش محصولات مرتبط
@@ -17,15 +30,16 @@ interface RelatedProductsProps {
 const RelatedProducts = ({ products, currentProductId }: RelatedProductsProps) => {
   // فیلتر محصولات مرتبط (غیر از محصول فعلی)
   const relatedProducts = products
-    .filter(p => p.id !== currentProductId)
+    .filter(p => p.id != currentProductId)
     .slice(0, 4);
 
   if (relatedProducts.length === 0) return null;
 
   // فرمت قیمت
-  const formatPrice = (price?: number) => {
+  const formatPrice = (price?: string | number) => {
     if (!price) return 'تماس بگیرید';
-    return price.toLocaleString('fa-IR') + ' تومان';
+    const priceNum = typeof price === 'string' ? parseFloat(price) : price;
+    return priceNum.toLocaleString('fa-IR') + ' تومان';
   };
 
   return (
@@ -39,13 +53,13 @@ const RelatedProducts = ({ products, currentProductId }: RelatedProductsProps) =
             سایر محصولات مشابه که ممکن است نیاز داشته باشید
           </p>
         </div>
-        <Link
+        <a
           href="/products"
           className="inline-flex items-center gap-2 text-brand-primary hover:text-brand-dark font-medium transition-colors"
         >
           <span>مشاهده همه</span>
           <FiChevronLeft />
-        </Link>
+        </a>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -56,18 +70,16 @@ const RelatedProducts = ({ products, currentProductId }: RelatedProductsProps) =
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
           >
-            <Link
+            <a
               href={`/products/${product.id}`}
-              className="group block bg-white rounded-xl shadow-md hover:shadow-xl transition-all hover:-translate-y-2 overflow-hidden"
+              className="group block bg-white rounded-button shadow-md hover:shadow-xl transition-all hover:-translate-y-2 overflow-hidden"
             >
               <div className="relative h-48 bg-gray-100">
-                {product.images && product.images[0] ? (
-                  <Image
-                    src={product.images[0]}
+                {product.image_url ? (
+                  <img
+                    src={product.image_url}
                     alt={product.name}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                    sizes="(max-width: 768px) 100vw, 25vw"
+                    className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center">
@@ -80,12 +92,12 @@ const RelatedProducts = ({ products, currentProductId }: RelatedProductsProps) =
                   {product.name}
                 </h3>
                 <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
-                  <span>{product.thickness}mm</span>
+                  <span>{product.thickness || '16'}mm</span>
                   <span>•</span>
-                  <span>{product.brand}</span>
+                  <span>{product.brand || 'MDF'}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm font-bold text-brand-primary">
+                  <span className="product-price text-brand-primary">
                     {formatPrice(product.price)}
                   </span>
                   <span className={`text-xs px-2 py-1 rounded-full ${
@@ -97,7 +109,7 @@ const RelatedProducts = ({ products, currentProductId }: RelatedProductsProps) =
                   </span>
                 </div>
               </div>
-            </Link>
+            </a>
           </motion.div>
         ))}
       </div>

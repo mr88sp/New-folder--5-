@@ -1,20 +1,25 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { FiMapPin, FiCalendar, FiZoomIn } from 'react-icons/fi';
-import { useState } from 'react';
+import CustomImage from "@/components/ui/CustomImage";
+import { motion } from "framer-motion";
+import { FiMapPin, FiCalendar, FiZoomIn } from "react-icons/fi";
+import { useState } from "react";
 
 /**
  * کامپوننت ProjectCard - کارت نمایش پروژه
  * منطبق بر ساختار project-card در projects.html
  */
 interface ProjectCardProps {
+  siteContent: any;
   project: any;
   onViewDetails: (project: any) => void;
 }
 
-const ProjectCard = ({ project, onViewDetails }: ProjectCardProps) => {
+const ProjectCard = ({
+  siteContent,
+  project,
+  onViewDetails,
+}: ProjectCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -25,13 +30,13 @@ const ProjectCard = ({ project, onViewDetails }: ProjectCardProps) => {
       whileHover={{ y: -8 }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
-      className="group bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer"
+      className="group bg-white rounded-card shadow-lg overflow-hidden cursor-pointer"
       onClick={() => onViewDetails(project)}
     >
       {/* تصویر پروژه */}
       <div className="relative h-64 overflow-hidden">
         {project.thumbnail ? (
-          <Image
+          <CustomImage
             src={project.thumbnail}
             alt={project.title}
             fill
@@ -40,7 +45,9 @@ const ProjectCard = ({ project, onViewDetails }: ProjectCardProps) => {
           />
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-            <span className="text-6xl text-gray-400">🏗️</span>
+            <span className="text-6xl text-gray-400">
+              {siteContent.projects_no_image_icon || "🏗️"}
+            </span>
           </div>
         )}
 
@@ -65,7 +72,9 @@ const ProjectCard = ({ project, onViewDetails }: ProjectCardProps) => {
         {/* دسته‌بندی */}
         <div className="absolute top-4 left-4">
           <span className="bg-brand-primary text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
-            {project.category}
+            {typeof project.category === "object"
+              ? project.category.name
+              : project.category}
           </span>
         </div>
 
@@ -90,14 +99,18 @@ const ProjectCard = ({ project, onViewDetails }: ProjectCardProps) => {
           {project.description}
         </p>
         <div className="flex flex-wrap gap-2">
-          {project.features.slice(0, 3).map((feature: string, index: number) => (
-            <span
-              key={index}
-              className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full"
-            >
-              {feature}
-            </span>
-          ))}
+          {project.features &&
+            project.features.length > 0 &&
+            project.features
+              .slice(0, 3)
+              .map((feature: string, index: number) => (
+                <span
+                  key={index}
+                  className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full"
+                >
+                  {feature}
+                </span>
+              ))}
         </div>
       </div>
     </motion.div>

@@ -3,14 +3,21 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiChevronLeft, FiChevronRight, FiAward } from 'react-icons/fi';
-import certificatesData from '@/data/about/certificates.json';
+
+interface CertificatesSliderProps {
+  siteContent: any;
+}
 
 /**
  * کامپوننت CertificatesSlider - اسلایدر گواهینامه‌ها
  * منطبق بر ساختار certificates-slider در about.html
  */
-const CertificatesSlider = () => {
+const CertificatesSlider = ({ siteContent }: CertificatesSliderProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  const certificatesData = siteContent.certificates_items || siteContent.certificates || [];
+
+  if (certificatesData.length === 0) return null;
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % certificatesData.length);
@@ -24,16 +31,16 @@ const CertificatesSlider = () => {
     <div className="mb-16">
       <div className="text-center mb-12">
         <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
-          گواهینامه‌ها و افتخارات
+          {siteContent.certificates_title || "گواهینامه‌ها و افتخارات"}
         </h2>
         <p className="text-gray-600 max-w-2xl mx-auto">
-          تأییدیه‌های کیفیت و افتخارات کسب‌شده
+          {siteContent.certificates_description || "تأییدیه‌های کیفیت و افتخارات کسب‌شده"}
         </p>
       </div>
 
       <div className="relative">
         {/* اسلایدر */}
-        <div className="overflow-hidden rounded-2xl">
+        <div className="overflow-hidden rounded-card">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
@@ -41,11 +48,11 @@ const CertificatesSlider = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -100 }}
               transition={{ duration: 0.5 }}
-              className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 md:p-12"
+              className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-card p-8 md:p-12"
             >
               <div className="flex flex-col md:flex-row items-center gap-8">
                 {/* آیکون گواهینامه */}
-                <div className="w-24 h-24 bg-white/10 rounded-2xl flex items-center justify-center">
+                <div className="w-24 h-24 bg-white/10 rounded-card flex items-center justify-center">
                   <span className="text-5xl">
                     {certificatesData[currentIndex].icon}
                   </span>
@@ -83,7 +90,7 @@ const CertificatesSlider = () => {
 
         {/* نقاط اسلایدر */}
         <div className="flex justify-center gap-2 mt-6">
-          {certificatesData.map((_, index) => (
+          {certificatesData?.map((_: any, index: number) => (
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}

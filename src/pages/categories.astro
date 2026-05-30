@@ -1,0 +1,31 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Breadcrumb from '../components/layout/Breadcrumb';
+import CategoriesPageContent from '../components/categories/CategoriesPageContent';
+import { getSiteContent, getProducts } from '../utils/api';
+
+// دریافت محتوای سایت از API
+const siteContent = await getSiteContent();
+
+// دریافت محصولات از API
+const products = await getProducts();
+
+const familyParam = Astro.url.searchParams.get('family');
+const surfaceParam = Astro.url.searchParams.get('surface');
+const searchParam = Astro.url.searchParams.get('q');
+---
+
+<MainLayout title={siteContent.categories_page_title || "رنگ‌بندی MDF"}>
+  <div class="pb-16">
+    <Breadcrumb client:load />
+    
+    <CategoriesPageContent 
+      siteContent={siteContent}
+      products={products}
+      initialFamily={familyParam || undefined}
+      initialSurface={surfaceParam || undefined}
+      initialSearch={searchParam || undefined}
+      client:load 
+    />
+  </div>
+</MainLayout>

@@ -30,7 +30,7 @@ const Card = ({
 
   return (
     <div className={`
-      bg-white rounded-2xl shadow-lg overflow-hidden
+      bg-white rounded-card shadow-lg overflow-hidden
       ${paddingClasses[padding]}
       ${hoverClasses}
       ${className}
